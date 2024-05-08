@@ -62,7 +62,7 @@ export default defineComponent({
   props: {
     maxTime: Number
   },
-  emits: ['resetAll'],
+  emits: ['resetAll', 'reset'],
   data() {
     return {
       goldenScore: false,
@@ -82,6 +82,7 @@ export default defineComponent({
       ;(this.$refs as any).matchTimer.stop()
     },
     resetTime() {
+      this.$emit('reset')
       ;(this.$refs.matchTimer as any).resetTime()
     },
     resetAll() {

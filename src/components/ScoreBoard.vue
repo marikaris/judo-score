@@ -11,7 +11,7 @@
     <div v-show="!settingsOpen">
       <JudoPlayer @wins="stopTimeIfWin" ref="p1" :name="player1" class="bg-white"></JudoPlayer>
       <JudoPlayer @wins="stopTimeIfWin" ref="p2" :name="player2" class="bg-danger"></JudoPlayer>
-      <TimeBanner @resetAll="resetScore" :maxTime="maxTime" ref="timeBanner" />
+      <TimeBanner @reset="bout += 1" @resetAll="resetScore" :maxTime="maxTime" ref="timeBanner" />
     </div>
   </div>
 </template>
