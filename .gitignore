@@ -28,3 +28,14 @@ coverage
 *.sw?
 
 *.tsbuildinfo
+
+*.vue.js.map
+*.vue.d.ts
+*.vue.js
+src/main.d.ts
+src/main.js
+src/main.js.map
+src/utils/utils.d.ts
+src/utils/utils.js
+*.zip
+.yarn
