@@ -3,13 +3,13 @@
     <div class="col">
       <h1 class="align-middle">{{ name }}</h1>
     </div>
-    <div class="col text-center">
+    <div class="col">
       <ScoreCounter ref="ippon" @add="processIppon" name="Ippon" />
     </div>
-    <div class="col text-center">
+    <div class="col">
       <ScoreCounter ref="wazari" @add="processWazari" name="Wazari" />
     </div>
-    <div class="col text-center">
+    <div class="col">
       <ScoreCounter ref="shido" name="Shido" />
     </div>
   </div>
