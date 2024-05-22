@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
     "target": "ESNext",
     "useDefineForClassFields": true,
     "module": "ESNext",
@@ -19,5 +20,6 @@
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"],
+  "exclude": ["./plugins/**/*", "./typings/**/*", "./dist/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

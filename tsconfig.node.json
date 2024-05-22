@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "outDir": "./dist",
     "composite": true,
     "module": "ESNext",
     "moduleResolution": "Node",
@@ -21,7 +22,5 @@
     }
   },
   "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.vue"],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules", "./dist/**/*"]
 }
