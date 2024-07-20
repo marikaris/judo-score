@@ -61,7 +61,11 @@ export default defineComponent({
       this.running = true
       this.timer = getTimer(() => {
         if (this.isCountdown) {
-          this.timeInSeconds--
+          if (this.timeInSeconds !== 0) {
+            this.timeInSeconds--
+          } else {
+            this.stop()
+          }
         } else {
           this.timeInSeconds++
         }
