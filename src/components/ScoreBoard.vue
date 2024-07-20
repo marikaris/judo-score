@@ -11,7 +11,13 @@
     <div v-show="!settingsOpen">
       <JudoPlayer @wins="stopTimeIfWin" ref="p1" :name="player1" class="bg-white"></JudoPlayer>
       <JudoPlayer @wins="stopTimeIfWin" ref="p2" :name="player2" class="bg-danger"></JudoPlayer>
-      <TimeBanner @reset="bout += 1" @resetAll="resetScore" :maxTime="maxTime" ref="timeBanner" />
+      <TimeBanner
+        @reset="bout += 1"
+        @resetAll="resetScore"
+        :maxTime="maxTime"
+        :isCountdown="isCountdown"
+        ref="timeBanner"
+      />
     </div>
   </div>
 </template>
@@ -44,6 +50,7 @@ export default defineComponent({
       this.player2 = (this.$refs as any).settings.p2
       this.maxTime = (this.$refs as any).settings.maxMatchTime
       this.maxPinTime = (this.$refs as any).settings.maxPinTime
+      this.isCountdown = (this.$refs as any).settings.countdown == 'down' ? true : false
     },
     resetScore() {
       ;(this.$refs as any).p1.reset()
@@ -52,6 +59,9 @@ export default defineComponent({
     toggleSettings() {
       this.settingsOpen = !this.settingsOpen
       if (!this.settingsOpen) {
+        //whyyyy???
+        this.$refs.timeBanner.goldenScore = false
+        this.$refs.timeBanner.maximumTime = this.maxTime
         this.onSettingsChange()
       }
     }
@@ -67,6 +77,7 @@ export default defineComponent({
     maxPinTime: number
     settingsOpen: boolean
     ipponStopsTime: boolean
+    isCountdown: boolean
   } {
     return {
       mat: 'Mat 1',
@@ -78,7 +89,8 @@ export default defineComponent({
       maxTime: 120,
       maxPinTime: 20,
       settingsOpen: false,
-      ipponStopsTime: true
+      ipponStopsTime: true,
+      isCountdown: true
     }
   }
 })

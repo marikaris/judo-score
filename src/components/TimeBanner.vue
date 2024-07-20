@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="col">
-      <MatchTimer ref="matchTimer" :maxTime="maximumTime" />
+      <MatchTimer ref="matchTimer" :maxTime="maximumTime" :isCountdown="isCountdown" />
     </div>
     <div class="col-2">
       <PinningTimer ref="pinTimer" v-show="!goldenScore" />
@@ -60,6 +60,10 @@ import PinningTimer from '@/components/PinningTimer.vue'
 export default defineComponent({
   name: 'TimeBanner',
   props: {
+    isCountdown: {
+      type: Boolean,
+      default: true
+    },
     maxTime: Number
   },
   emits: ['resetAll', 'reset'],
@@ -77,6 +81,7 @@ export default defineComponent({
       } else {
         this.maximumTime = this.maxTime
       }
+      this.resetTime()
     },
     stopTimer() {
       ;(this.$refs as any).matchTimer.stop()

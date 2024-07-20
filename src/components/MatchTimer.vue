@@ -30,14 +30,21 @@ import { defineComponent } from 'vue'
 export default defineComponent({
   name: 'MatchTimer',
   props: {
+    isCountdown: {
+      type: Boolean,
+      default: false
+    },
     maxTime: {
       type: Number,
       default: 120
     }
   },
   methods: {
+    getStartTime() {
+      return this.isCountdown ? this.maxTime : 0
+    },
     resetTime() {
-      this.timeInSeconds = 0
+      this.timeInSeconds = this.getStartTime()
     },
     toggleAndFocus() {
       ;(this.$refs as any).counterBtn.focus()
@@ -52,11 +59,22 @@ export default defineComponent({
     },
     run() {
       this.running = true
-      this.timer = getTimer(() => this.timeInSeconds++)
+      this.timer = getTimer(() => {
+        if (this.isCountdown) {
+          this.timeInSeconds--
+        } else {
+          this.timeInSeconds++
+        }
+      })
     },
     stop() {
       this.running = false
       clearInterval(this.timer)
+    }
+  },
+  watch: {
+    maxTime() {
+      this.resetTime()
     }
   },
   computed: {
@@ -66,7 +84,7 @@ export default defineComponent({
   },
   data(): { timeInSeconds: number; running: boolean; timer: any } {
     return {
-      timeInSeconds: 0,
+      timeInSeconds: this.getStartTime(),
       running: false,
       timer: null
     }

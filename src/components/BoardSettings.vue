@@ -66,10 +66,41 @@
             <input
               class="form-check-input"
               type="checkbox"
-              id="flexCheckDefault"
+              id="ipponStopsTime"
               v-model="ipponStopsTime"
             />
-            <label class="form-check-label" for="flexCheckDefault"> Ippon stops time </label>
+            <label class="form-check-label" for="ipponStopsTime"> Ippon stops time </label>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-3">
+            <br />
+            <form>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault1"
+                  value="down"
+                  v-model="countdown"
+                  checked
+                />
+                <label class="form-check-label" for="flexRadioDefault1"> Count down </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="flexRadioDefault"
+                  id="flexRadioDefault2"
+                  value="up"
+                  v-model="countdown"
+                />
+                <label class="form-check-label" for="flexRadioDefault2"> Count up </label>
+              </div>
+            </form>
           </div>
         </div>
       </form>
@@ -102,6 +133,7 @@ export default defineComponent({
   },
   data() {
     return {
+      countdown: 'down',
       maxMatchTime: 120,
       maxPinTime: 20,
       p1: 'Player 1',
