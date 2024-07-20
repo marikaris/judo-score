@@ -34,7 +34,7 @@ export default defineComponent({
     processWazari(value: number) {
       if (value === 2) {
         ;(this.$refs as any).wazari.reset()
-        ;(this.$refs as any).ippon.set(1)
+        this.$refs.ippon.add()
       }
     },
     reset() {
