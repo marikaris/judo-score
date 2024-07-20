@@ -1,11 +1,11 @@
 <template>
   <main>
-    <ScoreBoard/>
+    <ScoreBoard />
   </main>
 </template>
 
 <script setup lang="ts">
-import ScoreBoard from './components/ScoreBoard.vue';
+import ScoreBoard from './components/ScoreBoard.vue'
 </script>
 
 <style>
