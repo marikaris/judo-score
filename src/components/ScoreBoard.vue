@@ -51,6 +51,7 @@ export default defineComponent({
       this.maxTime = (this.$refs as any).settings.maxMatchTime
       this.maxPinTime = (this.$refs as any).settings.maxPinTime
       this.isCountdown = (this.$refs as any).settings.countdown == 'down' ? true : false
+      this.settingsOpen = false
     },
     resetScore() {
       ;(this.$refs as any).p1.reset()
