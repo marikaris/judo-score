@@ -82,7 +82,7 @@ export default defineComponent({
     return {
       mat: 'Mat 1',
       message: 'Yuseigachi Norg',
-      bout: 0,
+      bout: 1,
       boutTxt: 'Ronde',
       player1: 'Player 1',
       player2: 'Player 2',
