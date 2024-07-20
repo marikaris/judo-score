@@ -1,17 +1,19 @@
 <template>
   <div class="container-fluid bg-primary-subtle">
     <TopBanner
+      ref="topBanner"
       :bout="bout"
       :message="message"
       :mat="mat"
       :boutName="boutTxt"
       @openSettingsEvent="toggleSettings"
     />
-    <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="onSettingsChange" />
+    <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="saveSettings" />
     <div v-show="!settingsOpen">
       <JudoPlayer @wins="stopTimeIfWin" ref="p1" :name="player1" class="bg-white"></JudoPlayer>
       <JudoPlayer @wins="stopTimeIfWin" ref="p2" :name="player2" class="bg-danger"></JudoPlayer>
       <TimeBanner
+        :key="maxTime"
         @reset="bout += 1"
         @resetAll="resetScore"
         :maxTime="maxTime"
@@ -51,16 +53,18 @@ export default defineComponent({
       this.maxTime = (this.$refs as any).settings.maxMatchTime
       this.maxPinTime = (this.$refs as any).settings.maxPinTime
       this.isCountdown = (this.$refs as any).settings.countdown == 'down' ? true : false
-      this.settingsOpen = false
     },
     resetScore() {
       ;(this.$refs as any).p1.reset()
       ;(this.$refs as any).p2.reset()
     },
+    saveSettings() {
+      this.$refs.topBanner.toggleSettings()
+    },
     toggleSettings() {
+      console.log('toggling')
       this.settingsOpen = !this.settingsOpen
       if (!this.settingsOpen) {
-        //whyyyy???
         this.$refs.timeBanner.goldenScore = false
         this.$refs.timeBanner.maximumTime = this.maxTime
         this.onSettingsChange()
