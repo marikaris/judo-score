@@ -74,7 +74,6 @@ export default defineComponent({
       this.$refs.topBanner.toggleSettings()
     },
     toggleSettings() {
-      console.log('toggling')
       this.settingsOpen = !this.settingsOpen
       if (!this.settingsOpen) {
         this.$refs.timeBanner.goldenScore = false
