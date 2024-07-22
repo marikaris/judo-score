@@ -34,13 +34,42 @@
             <input type="string" class="form-control" v-model="p1" />
           </div>
         </div>
-        <!-- colour of players -->
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> Player 2 name: </label>
           <div class="col-sm-3">
             <input type="string" class="form-control" v-model="p2" />
           </div>
         </div>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col">
+            <!-- De judoka met het witte pak staat rechts van de scheidsrechter. De judoka met het blauwe pak
+staat links van de scheidsrechter.  -->
+            <b>Orientation:</b>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                value="horizontal"
+                v-model="orientation"
+                checked
+              />
+              <label class="form-check-label"> Horizontal </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="flexRadioDefault"
+                value="vertical"
+                v-model="orientation"
+              />
+              <label class="form-check-label"> Vertical </label>
+            </div>
+          </div>
+        </div>
+        <!-- colour of players -->
         <h2>Time</h2>
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> Max time: </label>
@@ -76,6 +105,7 @@
           <div class="col-3"></div>
           <div class="col-3">
             <br />
+            <b>Main timer type:</b>
             <form>
               <div class="form-check">
                 <input
@@ -87,7 +117,7 @@
                   v-model="countdown"
                   checked
                 />
-                <label class="form-check-label" for="flexRadioDefault1"> Count down </label>
+                <label class="form-check-label"> Count down </label>
               </div>
               <div class="form-check">
                 <input
@@ -98,7 +128,7 @@
                   value="up"
                   v-model="countdown"
                 />
-                <label class="form-check-label" for="flexRadioDefault2"> Count up </label>
+                <label class="form-check-label"> Count up </label>
               </div>
             </form>
           </div>
@@ -108,6 +138,7 @@
         <i class="bi bi-floppy-fill"></i> Save
       </button>
     </div>
+
     <!-- <div class="col">
       <label for="exampleColorInput" class="form-label">Color picker</label>
       <input
@@ -133,6 +164,7 @@ export default defineComponent({
   },
   data() {
     return {
+      orientation: 'horizontal',
       countdown: 'down',
       maxMatchTime: 120,
       maxPinTime: 20,

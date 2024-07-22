@@ -10,20 +10,24 @@
     />
     <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="saveSettings" />
     <div v-show="!settingsOpen">
-      <JudoPlayer
-        @wins="stopTimeIfWin"
-        ref="p1"
-        :name="player1"
-        class="bg-white"
-        style="height: 35vh"
-      ></JudoPlayer>
-      <JudoPlayer
-        @wins="stopTimeIfWin"
-        ref="p2"
-        :name="player2"
-        class="bg-danger"
-        style="height: 35vh"
-      ></JudoPlayer>
+      <div class="row p-0">
+        <JudoPlayer
+          @wins="stopTimeIfWin"
+          ref="p1"
+          :name="player1"
+          class="bg-white m-0"
+          :class="orientation === 'vertical' ? 'col-6' : 'col-12'"
+          :style="orientation === 'vertical' ? 'height: 50vh' : 'height: 35vh'"
+        ></JudoPlayer>
+        <JudoPlayer
+          @wins="stopTimeIfWin"
+          ref="p2"
+          :name="player2"
+          class="bg-danger m-0"
+          :class="orientation === 'vertical' ? 'col-6' : 'col-12'"
+          :style="orientation === 'vertical' ? 'height: 50vh' : 'height: 35vh'"
+        ></JudoPlayer>
+      </div>
       <TimeBanner
         :key="maxTime"
         @reset="bout += 1"
@@ -65,6 +69,7 @@ export default defineComponent({
       this.maxTime = (this.$refs as any).settings.maxMatchTime
       this.maxPinTime = (this.$refs as any).settings.maxPinTime
       this.isCountdown = (this.$refs as any).settings.countdown == 'down' ? true : false
+      this.orientation = (this.$refs as any).settings.orientation
     },
     resetScore() {
       ;(this.$refs as any).p1.reset()
@@ -74,7 +79,6 @@ export default defineComponent({
       this.$refs.topBanner.toggleSettings()
     },
     toggleSettings() {
-      console.log('toggling')
       this.settingsOpen = !this.settingsOpen
       if (!this.settingsOpen) {
         this.$refs.timeBanner.goldenScore = false
@@ -95,6 +99,7 @@ export default defineComponent({
     settingsOpen: boolean
     ipponStopsTime: boolean
     isCountdown: boolean
+    orientation: string
   } {
     return {
       mat: 'Mat 1',
@@ -107,7 +112,8 @@ export default defineComponent({
       maxPinTime: 20,
       settingsOpen: false,
       ipponStopsTime: true,
-      isCountdown: true
+      isCountdown: true,
+      orientation: 'horizontal'
     }
   }
 })
