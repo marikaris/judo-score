@@ -10,8 +10,20 @@
     />
     <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="saveSettings" />
     <div v-show="!settingsOpen">
-      <JudoPlayer @wins="stopTimeIfWin" ref="p1" :name="player1" class="bg-white"></JudoPlayer>
-      <JudoPlayer @wins="stopTimeIfWin" ref="p2" :name="player2" class="bg-danger"></JudoPlayer>
+      <JudoPlayer
+        @wins="stopTimeIfWin"
+        ref="p1"
+        :name="player1"
+        class="bg-white"
+        style="height: 35vh"
+      ></JudoPlayer>
+      <JudoPlayer
+        @wins="stopTimeIfWin"
+        ref="p2"
+        :name="player2"
+        class="bg-danger"
+        style="height: 35vh"
+      ></JudoPlayer>
       <TimeBanner
         :key="maxTime"
         @reset="bout += 1"
