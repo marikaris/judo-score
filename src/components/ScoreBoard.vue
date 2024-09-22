@@ -64,6 +64,7 @@ export default defineComponent({
       this.player2 = (this.$refs as any).settings.p2
       this.maxTime = (this.$refs as any).settings.maxMatchTime
       this.maxPinTime = (this.$refs as any).settings.maxPinTime
+      this.ipponStopsTime = (this.$refs as any).settings.ipponStopsTime
       this.isCountdown = (this.$refs as any).settings.countdown == 'down' ? true : false
     },
     resetScore() {
