@@ -4,6 +4,15 @@
 
 Simple judo score board to use in competitions. Build and deploy on own server or try out the [demo](https://yuseigachi-score.netlify.app) on Netlify.
 
+## Key bindings
+
+| Key   | Result           |
+| ----- | ---------------- |
+| Space | Toggle timer     |
+| Shift | Toggle pin timer |
+| r     | Refresh all      |
+| t     | Refresh timers   |
+
 ## Issues
 
 Submit issues via the github issue tracker.

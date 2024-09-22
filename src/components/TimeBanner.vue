@@ -59,6 +59,13 @@ import PinningTimer from '@/components/PinningTimer.vue'
 
 export default defineComponent({
   name: 'TimeBanner',
+  mounted() {
+    let self = this
+
+    window.addEventListener('keyup', function (e) {
+      self.handleKeyPress(e as KeyboardEvent)
+    })
+  },
   props: {
     isCountdown: {
       type: Boolean,
@@ -77,6 +84,17 @@ export default defineComponent({
     }
   },
   methods: {
+    handleKeyPress(e: KeyboardEvent) {
+      if (e.code === 'Space') {
+        ;(this.$refs as any).matchTimer.toggleRun()
+      } else if (e.key === 'Shift') {
+        ;(this.$refs as any).pinTimer.toggleRun()
+      } else if (e.key == 'r') {
+        this.resetAll()
+      } else if (e.key == 't') {
+        this.resetTime()
+      }
+    },
     runGoldenScore() {
       this.goldenScore = !this.goldenScore
       if (this.goldenScore) {
