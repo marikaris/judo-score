@@ -12,6 +12,7 @@ Simple judo score board to use in competitions. Build and deploy on own server o
 | Shift | Toggle pin timer |
 | r     | Refresh all      |
 | t     | Refresh timers   |
+| g     | Golden score     |
 
 ## Issues
 

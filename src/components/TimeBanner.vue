@@ -93,6 +93,8 @@ export default defineComponent({
         this.resetAll()
       } else if (e.key == 't') {
         this.resetTime()
+      } else if (e.key == 'g') {
+        this.runGoldenScore()
       }
     },
     runGoldenScore() {
