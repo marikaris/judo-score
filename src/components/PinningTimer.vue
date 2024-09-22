@@ -65,6 +65,7 @@ export default defineComponent({
       }
     },
     run() {
+      this.resetTime()
       this.running = true
       this.timer = getTimer(() =>
         this.timeInSeconds < this.maxTime ? this.timeInSeconds++ : this.stop()
