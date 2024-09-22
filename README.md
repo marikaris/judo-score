@@ -2,7 +2,7 @@
 
 # Judo Score Board
 
-Simple judo score board to use in competitions. Build and deploy on own server or try it out via the netlify app.
+Simple judo score board to use in competitions. Build and deploy on own server or try out the [demo](https://yuseigachi-score.netlify.app) on Netlify.
 
 ## Issues
 
