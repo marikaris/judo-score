@@ -64,7 +64,10 @@ export default defineComponent({
       type: Boolean,
       default: true
     },
-    maxTime: Number
+    maxTime: {
+      type: Number,
+      required: true
+    }
   },
   emits: ['resetAll', 'reset'],
   data() {
@@ -92,6 +95,7 @@ export default defineComponent({
     },
     resetAll() {
       this.goldenScore = false
+      this.maximumTime = this.maxTime
       ;(this.$refs.pinTimer as any).clearPrev()
       ;(this.$refs.pinTimer as any).resetTime()
       this.resetTime()
