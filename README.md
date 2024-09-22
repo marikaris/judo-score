@@ -1,6 +1,12 @@
-# judo-score
+[![Netlify Status](https://api.netlify.com/api/v1/badges/8afdab9f-0b63-4950-9c8f-7c500cee1217/deploy-status)](https://app.netlify.com/sites/yuseigachi-score/deploys)
 
-Simple judo score board to use in competitions
+# Judo Score Board
+
+Simple judo score board to use in competitions. Build and deploy on own server or try it out via the netlify app.
+
+## Issues
+
+Submit issues via the github issue tracker.
 
 ## Dev information
 
