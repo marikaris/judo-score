@@ -7,7 +7,7 @@
       <ScoreCounter ref="ippon" @add="processIppon" name="Ippon" />
     </div>
     <div class="col">
-      <ScoreCounter ref="wazari" @add="processWazari" name="Wazari" />
+      <ScoreCounter ref="wazaari" @add="processWazaari" name="Waza-ari" />
     </div>
     <div class="col">
       <ScoreCounter ref="shido" name="Shido" />
@@ -31,15 +31,15 @@ export default defineComponent({
         this.$emit('wins')
       }
     },
-    processWazari(value: number) {
+    processWazaari(value: number) {
       if (value === 2) {
-        ;(this.$refs as any).wazari.reset()
+        ;(this.$refs as any).wazaari.reset()
         this.$refs.ippon.add()
       }
     },
     reset() {
       ;(this.$refs as any).ippon.reset()
-      ;(this.$refs as any).wazari.reset()
+      ;(this.$refs as any).wazaari.reset()
       ;(this.$refs as any).shido.reset()
     }
   },
