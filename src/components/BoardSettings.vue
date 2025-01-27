@@ -27,6 +27,14 @@
             <input type="string" class="form-control" v-model="msg" />
           </div>
         </div>
+        <h2>Score</h2>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="form-check col-3">
+            <input class="form-check-input" type="checkbox" id="yuko" v-model="yuko" />
+            <label class="form-check-label" for="yuko"> Add yuko </label>
+          </div>
+        </div>
         <h2>Players</h2>
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> Player 1 name: </label>
@@ -143,7 +151,8 @@ export default defineComponent({
       msg: 'Yuseigachi Norg',
       mat: 'Mat 1',
       boutTxt: 'Ronde',
-      ipponStopsTime: true
+      ipponStopsTime: true,
+      yuko: true
     }
   }
 })

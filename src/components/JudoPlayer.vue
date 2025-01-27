@@ -9,6 +9,9 @@
     <div class="col">
       <ScoreCounter ref="wazaari" @add="processWazaari" name="Waza-ari" />
     </div>
+    <div class="col" v-if="useYuko">
+      <ScoreCounter ref="yuko" @add="() => {}" name="Yuko" />
+    </div>
     <div class="col">
       <ScoreCounter ref="shido" name="Shido" />
     </div>
@@ -40,11 +43,16 @@ export default defineComponent({
     reset() {
       ;(this.$refs as any).ippon.reset()
       ;(this.$refs as any).wazaari.reset()
+      ;(this.$refs as any).yuko.reset()
       ;(this.$refs as any).shido.reset()
     }
   },
   props: {
-    name: String
+    name: String,
+    useYuko: {
+      type: Boolean,
+      default: true
+    }
   }
 })
 </script>

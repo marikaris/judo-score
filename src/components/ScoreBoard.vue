@@ -16,6 +16,7 @@
         :name="player1"
         class="bg-white"
         style="height: 35vh"
+        :useYuko="useYuko"
       ></JudoPlayer>
       <JudoPlayer
         @wins="stopTimeIfWin"
@@ -23,6 +24,7 @@
         :name="player2"
         class="bg-danger"
         style="height: 35vh"
+        :useYuko="useYuko"
       ></JudoPlayer>
       <TimeBanner
         :key="maxTime"
@@ -66,6 +68,7 @@ export default defineComponent({
       this.maxPinTime = (this.$refs as any).settings.maxPinTime
       this.ipponStopsTime = (this.$refs as any).settings.ipponStopsTime
       this.isCountdown = (this.$refs as any).settings.countdown == 'down' ? true : false
+      this.useYuko = (this.$refs as any).settings.yuko
     },
     resetScore() {
       ;(this.$refs as any).p1.reset()
@@ -95,6 +98,7 @@ export default defineComponent({
     settingsOpen: boolean
     ipponStopsTime: boolean
     isCountdown: boolean
+    useYuko: boolean
   } {
     return {
       mat: 'Mat 1',
@@ -107,7 +111,8 @@ export default defineComponent({
       maxPinTime: 20,
       settingsOpen: false,
       ipponStopsTime: true,
-      isCountdown: true
+      isCountdown: true,
+      useYuko: true
     }
   }
 })
