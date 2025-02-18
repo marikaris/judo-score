@@ -32,6 +32,7 @@
         @resetAll="resetScore"
         :maxTime="maxTime"
         :isCountdown="isCountdown"
+        :players="[player1, player2]"
         ref="timeBanner"
       />
     </div>

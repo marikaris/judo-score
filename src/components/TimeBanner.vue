@@ -38,7 +38,7 @@
           autocomplete="off"
           checked
         />
-        <label class="btn btn-outline-light" for="vbtn-radio1">Player 1</label>
+        <label class="btn btn-outline-light" for="vbtn-radio1">{{ players[0] }}</label>
         <input
           type="radio"
           class="btn-check"
@@ -46,7 +46,7 @@
           id="vbtn-radio2"
           autocomplete="off"
         />
-        <label class="btn btn-outline-danger" for="vbtn-radio2">Player 2</label>
+        <label class="btn btn-outline-danger" for="vbtn-radio2">{{ players[1] }}</label>
       </div>
     </div>
   </div>
@@ -73,6 +73,11 @@ export default defineComponent({
     },
     maxTime: {
       type: Number,
+      required: true
+    },
+    players: {
+      // [player1, player2]
+      type: Array,
       required: true
     }
   },
