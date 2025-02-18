@@ -33,6 +33,7 @@
         :maxTime="maxTime"
         :isCountdown="isCountdown"
         :players="[player1, player2]"
+        :isSettingsOpen="settingsOpen"
         ref="timeBanner"
       />
     </div>

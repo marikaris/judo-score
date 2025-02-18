@@ -79,6 +79,10 @@ export default defineComponent({
       // [player1, player2]
       type: Array,
       required: true
+    },
+    isSettingsOpen: {
+      type: Boolean,
+      required: true
     }
   },
   emits: ['resetAll', 'reset'],
@@ -90,16 +94,18 @@ export default defineComponent({
   },
   methods: {
     handleKeyPress(e: KeyboardEvent) {
-      if (e.code === 'Space') {
-        ;(this.$refs as any).matchTimer.toggleRun()
-      } else if (e.key === 'Shift') {
-        ;(this.$refs as any).pinTimer.toggleRun()
-      } else if (e.key == 'r') {
-        this.resetAll()
-      } else if (e.key == 't') {
-        this.resetTime()
-      } else if (e.key == 'g') {
-        this.runGoldenScore()
+      if (!this.isSettingsOpen) {
+        if (e.code === 'Tab') {
+          ;(this.$refs as any).matchTimer.toggleRun()
+        } else if (e.key === 'Shift') {
+          ;(this.$refs as any).pinTimer.toggleRun()
+        } else if (e.key == 'r') {
+          this.resetAll()
+        } else if (e.key == 't') {
+          this.resetTime()
+        } else if (e.key == 'g') {
+          this.runGoldenScore()
+        }
       }
     },
     runGoldenScore() {

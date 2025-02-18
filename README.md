@@ -8,7 +8,7 @@ Simple judo score board to use in competitions. Build and deploy on own server o
 
 | Key   | Result           |
 | ----- | ---------------- |
-| Space | Toggle timer     |
+| Tab   | Toggle timer     |
 | Shift | Toggle pin timer |
 | r     | Refresh all      |
 | t     | Refresh timers   |
