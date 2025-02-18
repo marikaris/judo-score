@@ -7,9 +7,11 @@
       :mat="mat"
       :boutName="boutTxt"
       @openSettingsEvent="toggleSettings"
+      @openHelpEvent="toggleHelp"
     />
     <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="saveSettings" />
-    <div v-show="!settingsOpen">
+    <HelpPage ref="help" v-show="helpOpen" />
+    <div v-show="!settingsOpen && !helpOpen">
       <JudoPlayer
         @wins="stopTimeIfWin"
         ref="p1"
@@ -46,6 +48,7 @@ import TopBanner from '@/components/TopBanner.vue'
 import JudoPlayer from '@/components/JudoPlayer.vue'
 import TimeBanner from '@/components/TimeBanner.vue'
 import BoardSettings from '@/components/BoardSettings.vue'
+import HelpPage from '@/components/HelpPage.vue'
 
 export default defineComponent({
   name: 'ScoreBoard',
@@ -53,7 +56,8 @@ export default defineComponent({
     TopBanner,
     JudoPlayer,
     TimeBanner,
-    BoardSettings
+    BoardSettings,
+    HelpPage
   },
   methods: {
     stopTimeIfWin() {
@@ -80,6 +84,9 @@ export default defineComponent({
     saveSettings() {
       this.$refs.topBanner.toggleSettings()
     },
+    toggleHelp() {
+      this.helpOpen = !this.helpOpen
+    },
     toggleSettings() {
       this.settingsOpen = !this.settingsOpen
       if (!this.settingsOpen) {
@@ -99,6 +106,7 @@ export default defineComponent({
     maxTime: number
     maxPinTime: number
     settingsOpen: boolean
+    helpOpen: boolean
     ipponStopsTime: boolean
     isCountdown: boolean
     useYuko: boolean
@@ -113,6 +121,7 @@ export default defineComponent({
       maxTime: 120,
       maxPinTime: 20,
       settingsOpen: false,
+      helpOpen: false,
       ipponStopsTime: true,
       isCountdown: true,
       useYuko: true
