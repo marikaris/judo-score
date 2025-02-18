@@ -21,7 +21,7 @@
       <MatchTimer ref="matchTimer" :maxTime="maximumTime" :isCountdown="isCountdown" />
     </div>
     <div class="col-2">
-      <PinningTimer ref="pinTimer" v-show="!goldenScore" />
+      <PinningTimer ref="pinTimer" />
     </div>
     <div class="col-1 d-flex align-items-center">
       <div
