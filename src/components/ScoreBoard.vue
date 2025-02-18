@@ -70,6 +70,7 @@ export default defineComponent({
       this.ipponStopsTime = (this.$refs as any).settings.ipponStopsTime
       this.isCountdown = (this.$refs as any).settings.countdown == 'down' ? true : false
       this.useYuko = (this.$refs as any).settings.yuko
+      this.mat = (this.$refs as any).settings.mat
     },
     resetScore() {
       ;(this.$refs as any).p1.reset()
