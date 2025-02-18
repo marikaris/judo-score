@@ -1,13 +1,13 @@
 <template>
   <div class="row">
     <div class="col">
-      <h3>{{ mat }}</h3>
+      <h1>{{ mat }}</h1>
     </div>
     <div class="col">
-      <h3>{{ message }}</h3>
+      <h1>{{ message }}</h1>
     </div>
     <div class="col">
-      <h3>{{ boutName }} {{ bout }}</h3>
+      <h1>{{ boutName }} {{ bout }}</h1>
     </div>
     <div class="col">
       <button class="btn btn-link float-end" @click="toggleSettings">

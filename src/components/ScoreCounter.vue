@@ -2,7 +2,7 @@
   <div class="col text-center">
     <div class="row">
       <div class="col">
-        <h3>
+        <h2>
           <button class="btn btn-sm" @click="substract()">
             <i class="bi bi-dash-lg"></i>
           </button>
@@ -10,7 +10,7 @@
           <button class="btn btn-sm" @click="add()">
             <i class="bi bi-plus-lg"></i>
           </button>
-        </h3>
+        </h2>
       </div>
     </div>
     <div class="row">
