@@ -29,6 +29,67 @@ export default defineComponent({
   },
   emits: ['wins'],
   methods: {
+    handleKey(e: KeyboardEvent) {
+      const key = e.key
+      const isP1 = (this as any).player === 1
+      const isP2 = (this as any).player === 2
+      // Player 1 bindings
+      if (isP1) {
+        switch (key) {
+          case 'a':
+          case 'A':
+            ;(this.$refs as any).ippon.add()
+            return
+          case 'z':
+          case 'Z':
+            ;(this.$refs as any).ippon.subtract()
+            return
+          case 's':
+          case 'S':
+            ;(this.$refs as any).wazaari.add()
+            return
+          case 'x':
+          case 'X':
+            ;(this.$refs as any).wazaari.subtract()
+            return
+          case 'd':
+          case 'D':
+            if ((this as any).useYuko) (this.$refs as any).yuko.add()
+            return
+          case 'c':
+          case 'C':
+            if ((this as any).useYuko) (this.$refs as any).yuko.subtract()
+            return
+        }
+      }
+      // Player 2 bindings
+      if (isP2) {
+        switch (key) {
+          case 'l':
+          case 'L':
+            if ((this as any).useYuko) (this.$refs as any).yuko.add()
+            return
+          case '.':
+            if ((this as any).useYuko) (this.$refs as any).yuko.subtract()
+            return
+          case 'k':
+          case 'K':
+            ;(this.$refs as any).wazaari.add()
+            return
+          case ',':
+            ;(this.$refs as any).wazaari.subtract()
+            return
+          case 'j':
+          case 'J':
+            ;(this.$refs as any).ippon.add()
+            return
+          case 'm':
+          case 'M':
+            ;(this.$refs as any).ippon.subtract()
+            return
+        }
+      }
+    },
     processIppon(value: number) {
       if (value == 1) {
         this.$emit('wins')
@@ -49,10 +110,20 @@ export default defineComponent({
   },
   props: {
     name: String,
+    player: {
+      type: Number,
+      default: 1
+    },
     useYuko: {
       type: Boolean,
       default: true
     }
+  },
+  mounted() {
+    window.addEventListener('keydown', this.handleKey as any)
+  },
+  beforeUnmount() {
+    window.removeEventListener('keydown', this.handleKey as any)
   }
 })
 </script>
