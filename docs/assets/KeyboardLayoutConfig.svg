@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1120" height="520" viewBox="0 0 1120 520">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .plate { fill: #111827; stroke: #334155; stroke-width: 2; }
+      .key { fill: #1f2937; stroke: #475569; stroke-width: 2; }
+      .keyText { fill: #e5e7eb; font: 700 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+      .small { fill: #cbd5e1; font: 600 12px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+      .title { fill: #e5e7eb; font: 800 22px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+      .legend { fill: #e5e7eb; font: 600 14px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+
+      /* Shared / system keys (blue) */
+      .sys { fill: #60a5fa; stroke: #3b82f6; stroke-width: 3; }
+      .sysText { fill: #0b1220; font: 900 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+
+      /* Player 1 highlight (yellow) */
+      .p1 { fill: #fbbf24; stroke: #f59e0b; stroke-width: 3; }
+      .p1Text { fill: #111827; font: 900 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+
+      /* Player 2 highlight (green) */
+      .p2 { fill: #34d399; stroke: #10b981; stroke-width: 3; }
+      .p2Text { fill: #052e1a; font: 900 16px ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial; }
+
+      .pill { fill: #0b1220; stroke: #334155; stroke-width: 2; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect class="bg" x="0" y="0" width="1120" height="520" rx="18" />
+
+  <!-- Title -->
+  <text class="title" x="34" y="44">Keyboard (compact) — Match control (blue), Player 1 (yellow), Player 2 (green)</text>
+
+  <!-- Keyboard plate -->
+  <rect class="plate" x="24" y="62" width="1072" height="410" rx="18" />
+
+  <!-- Main block origin -->
+  <g transform="translate(46,92)">
+
+    <!-- ===== Row 1: ` 1..0 - = Backspace (NO Ins/Home/PgUp cluster) ===== -->
+    <g transform="translate(0,56)">
+      <!-- Player 2 Yuko -1 -->
+      <rect class="key" x="0" y="0" width="52" height="44" rx="10" />
+      <text class="keyText" x="26" y="28" text-anchor="middle">`</text>
+
+      <rect class="key" x="60" y="0" width="52" height="44" rx="10" /><text class="keyText" x="86" y="28" text-anchor="middle">1</text>
+      <rect class="key" x="120" y="0" width="52" height="44" rx="10" /><text class="keyText" x="146" y="28" text-anchor="middle">2</text>
+      <rect class="key" x="180" y="0" width="52" height="44" rx="10" /><text class="keyText" x="206" y="28" text-anchor="middle">3</text>
+      <rect class="key" x="240" y="0" width="52" height="44" rx="10" /><text class="keyText" x="266" y="28" text-anchor="middle">4</text>
+      <rect class="key" x="300" y="0" width="52" height="44" rx="10" /><text class="keyText" x="326" y="28" text-anchor="middle">5</text>
+      <rect class="key" x="360" y="0" width="52" height="44" rx="10" /><text class="keyText" x="386" y="28" text-anchor="middle">6</text>
+      <rect class="key" x="420" y="0" width="52" height="44" rx="10" /><text class="keyText" x="446" y="28" text-anchor="middle">7</text>
+      <rect class="key" x="480" y="0" width="52" height="44" rx="10" /><text class="keyText" x="506" y="28" text-anchor="middle">8</text>
+      <rect class="key" x="540" y="0" width="52" height="44" rx="10" /><text class="keyText" x="566" y="28" text-anchor="middle">9</text>
+      <rect class="key" x="600" y="0" width="52" height="44" rx="10" /><text class="keyText" x="626" y="28" text-anchor="middle">0</text>
+
+      <rect class="key" x="660" y="0" width="52" height="44" rx="10" /><text class="keyText" x="686" y="28" text-anchor="middle">-</text>
+      <rect class="key" x="720" y="0" width="52" height="44" rx="10" /><text class="keyText" x="746" y="28" text-anchor="middle">=</text>
+
+      <rect class="key" x="780" y="0" width="244" height="44" rx="10" /><text class="small" x="902" y="28" text-anchor="middle">Backspace</text>
+    </g>
+
+    <!-- ===== Row 2: Tab Q W E R T Y U I O P [ ] \ (NO Del/End/PgDn cluster) ===== -->
+    <g transform="translate(0,112)">
+      <!-- System: toggle timer -->
+      <rect class="sys" x="0" y="0" width="86" height="44" rx="10" />
+      <text class="sysText" x="43" y="28" text-anchor="middle">Tab</text>
+
+      <rect class="key" x="94" y="0" width="52" height="44" rx="10" /><text class="keyText" x="120" y="28" text-anchor="middle">Q</text>
+      <rect class="key" x="154" y="0" width="52" height="44" rx="10" /><text class="keyText" x="180" y="28" text-anchor="middle">W</text>
+      <rect class="key" x="214" y="0" width="52" height="44" rx="10" /><text class="keyText" x="240" y="28" text-anchor="middle">E</text>
+
+      <!-- System: refresh all / timers -->
+      <rect class="sys" x="274" y="0" width="52" height="44" rx="10" />
+      <text class="sysText" x="300" y="28" text-anchor="middle">R</text>
+
+      <rect class="sys" x="334" y="0" width="52" height="44" rx="10" />
+      <text class="sysText" x="360" y="28" text-anchor="middle">T</text>
+
+      <rect class="key" x="394" y="0" width="52" height="44" rx="10" /><text class="keyText" x="420" y="28" text-anchor="middle">Y</text>
+      <rect class="key" x="454" y="0" width="52" height="44" rx="10" /><text class="keyText" x="480" y="28" text-anchor="middle">U</text>
+      <rect class="key" x="514" y="0" width="52" height="44" rx="10" /><text class="keyText" x="540" y="28" text-anchor="middle">I</text>
+      <rect class="key" x="574" y="0" width="52" height="44" rx="10" /><text class="keyText" x="600" y="28" text-anchor="middle">O</text>
+      <rect class="key" x="634" y="0" width="52" height="44" rx="10" /><text class="keyText" x="660" y="28" text-anchor="middle">P</text>
+
+      <rect class="key" x="694" y="0" width="52" height="44" rx="10" /><text class="keyText" x="720" y="28" text-anchor="middle">[</text>
+      <rect class="key" x="754" y="0" width="52" height="44" rx="10" /><text class="keyText" x="780" y="28" text-anchor="middle">]</text>
+      <rect class="key" x="814" y="0" width="210" height="44" rx="10" /><text class="keyText" x="919" y="28" text-anchor="middle">\</text>
+    </g>
+
+    <!-- ===== Row 3: Caps A S D F G H J K L ; ' Enter ===== -->
+    <g transform="translate(0,168)">
+      <rect class="key" x="0" y="0" width="104" height="44" rx="10" /><text class="small" x="52" y="28" text-anchor="middle">Caps</text>
+
+      <!-- Player 1 -->
+      <rect class="p1" x="112" y="0" width="52" height="44" rx="10" />
+      <text class="p1Text" x="138" y="28" text-anchor="middle">A</text>
+
+      <rect class="p1" x="172" y="0" width="52" height="44" rx="10" />
+      <text class="p1Text" x="198" y="28" text-anchor="middle">S</text>
+
+      <rect class="p1" x="232" y="0" width="52" height="44" rx="10" />
+      <text class="p1Text" x="258" y="28" text-anchor="middle">D</text>
+
+      <rect class="key" x="292" y="0" width="52" height="44" rx="10" /><text class="keyText" x="318" y="28" text-anchor="middle">F</text>
+
+      <!-- System: golden score -->
+      <rect class="sys" x="352" y="0" width="52" height="44" rx="10" />
+      <text class="sysText" x="378" y="28" text-anchor="middle">G</text>
+
+      <rect class="key" x="412" y="0" width="52" height="44" rx="10" /><text class="keyText" x="438" y="28" text-anchor="middle">H</text>
+
+      <!-- Player 2 -->
+      <rect class="p2" x="472" y="0" width="52" height="44" rx="10" />
+      <text class="p2Text" x="498" y="28" text-anchor="middle">J</text>
+
+      <rect class="p2" x="532" y="0" width="52" height="44" rx="10" />
+      <text class="p2Text" x="558" y="28" text-anchor="middle">K</text>
+
+      <rect class="p2" x="592" y="0" width="52" height="44" rx="10" />
+      <text class="p2Text" x="618" y="28" text-anchor="middle">L</text>
+
+      <rect class="key" x="652" y="0" width="52" height="44" rx="10" /><text class="keyText" x="678" y="28" text-anchor="middle">;</text>
+      <rect class="key" x="712" y="0" width="52" height="44" rx="10" /><text class="keyText" x="738" y="28" text-anchor="middle">'</text>
+
+      <rect class="key" x="772" y="0" width="252" height="44" rx="10" /><text class="small" x="898" y="28" text-anchor="middle">Enter</text>
+    </g>
+
+    <!-- ===== Row 4: Shift Z X C V B N M , . / Shift ===== -->
+    <g transform="translate(0,224)">
+      <!-- System: toggle pin timer -->
+      <rect class="sys" x="0" y="0" width="138" height="44" rx="10" />
+      <text class="sysText" x="69" y="28" text-anchor="middle">Shift</text>
+
+      <!-- Player 1 -->
+      <rect class="p1" x="146" y="0" width="52" height="44" rx="10" />
+      <text class="p1Text" x="172" y="28" text-anchor="middle">Z</text>
+
+      <rect class="p1" x="206" y="0" width="52" height="44" rx="10" />
+      <text class="p1Text" x="232" y="28" text-anchor="middle">X</text>
+
+      <rect class="p1" x="266" y="0" width="52" height="44" rx="10" />
+      <text class="p1Text" x="292" y="28" text-anchor="middle">C</text>
+
+      <rect class="key" x="326" y="0" width="52" height="44" rx="10" /><text class="keyText" x="352" y="28" text-anchor="middle">V</text>
+      <rect class="key" x="386" y="0" width="52" height="44" rx="10" /><text class="keyText" x="412" y="28" text-anchor="middle">B</text>
+
+      <!-- Player 2 -->
+      <rect class="key" x="446" y="0" width="52" height="44" rx="10" />
+      <text class="keyText" x="472" y="28" text-anchor="middle">N</text>
+
+      <rect class="p2" x="506" y="0" width="52" height="44" rx="10" />
+      <text class="p2Text" x="532" y="28" text-anchor="middle">M</text>
+
+      <rect class="p2" x="566" y="0" width="52" height="44" rx="10" /><text class="p2Text" x="592" y="28" text-anchor="middle">,</text>
+      <rect class="p2" x="626" y="0" width="52" height="44" rx="10" /><text class="p2Text" x="652" y="28" text-anchor="middle">.</text>
+      <rect class="key" x="686" y="0" width="52" height="44" rx="10" /><text class="keyText" x="712" y="28" text-anchor="middle">/</text>
+
+      <rect class="key" x="746" y="0" width="278" height="44" rx="10" /><text class="small" x="885" y="28" text-anchor="middle">Shift</text>
+    </g>
+
+    <!-- ===== Row 5: Ctrl Win Alt Space Alt Fn Menu Ctrl ===== -->
+    <g transform="translate(0,280)">
+      <!-- System: toggle timer -->
+      <rect class="sys" x="0" y="0" width="78" height="44" rx="10" />
+      <text class="sysText" x="39" y="28" text-anchor="middle">Ctrl</text>
+
+      <rect class="key" x="86" y="0" width="64" height="44" rx="10" /><text class="small" x="118" y="28" text-anchor="middle">Win</text>
+      <rect class="key" x="158" y="0" width="64" height="44" rx="10" /><text class="small" x="190" y="28" text-anchor="middle">Alt</text>
+
+      <rect class="key" x="230" y="0" width="504" height="44" rx="10" /><text class="small" x="482" y="28" text-anchor="middle">Space</text>
+
+      <rect class="key" x="742" y="0" width="64" height="44" rx="10" /><text class="small" x="774" y="28" text-anchor="middle">Alt</text>
+      <rect class="key" x="814" y="0" width="64" height="44" rx="10" /><text class="small" x="846" y="28" text-anchor="middle">Fn</text>
+      <rect class="key" x="886" y="0" width="64" height="44" rx="10" /><text class="small" x="918" y="28" text-anchor="middle">Menu</text>
+      <rect class="key" x="958" y="0" width="66" height="44" rx="10" /><text class="small" x="991" y="28" text-anchor="middle">Ctrl</text>
+    </g>
+  </g>
+</svg>
