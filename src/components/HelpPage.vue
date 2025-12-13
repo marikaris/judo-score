@@ -24,7 +24,7 @@
             <th>Function</th>
           </tr>
           <tr>
-            <td>Tab</td>
+            <td>Tab, Control</td>
             <td>Run timer</td>
           </tr>
           <tr>
@@ -32,15 +32,15 @@
             <td>Run pin timer</td>
           </tr>
           <tr>
-            <td>r</td>
+            <td>r, R</td>
             <td>Refresh all</td>
           </tr>
           <tr>
-            <td>t</td>
+            <td>t, T</td>
             <td>Refresh timers</td>
           </tr>
           <tr>
-            <td>g</td>
+            <td>g, G</td>
             <td>Golden score</td>
           </tr>
         </table>

@@ -2,21 +2,21 @@
 
 # Judo Score Board
 
-Simple judo score board to use in competitions. Build and deploy on own server or try out the [demo](https://yuseigachi-score.netlify.app) on Netlify.
+Simple judo score board to use in competitions. Build and deploy on your own server or try out the [demo](https://yuseigachi-score.netlify.app) on Netlify.
 
 ## Key bindings
 
-| Key   | Result           |
-| ----- | ---------------- |
-| Tab   | Toggle timer     |
-| Shift | Toggle pin timer |
-| r     | Refresh all      |
-| t     | Refresh timers   |
-| g     | Golden score     |
+| Key          | Result           |
+|--------------|------------------|
+| Tab, Control | Toggle timer     |
+| Shift        | Toggle pin timer |
+| r, R         | Refresh all      |
+| t, T         | Refresh timers   |
+| g, G         | Golden score     |
 
 ## Issues
 
-Submit issues via the github issue tracker.
+Submit issues via the GitHub issue tracker.
 
 ## Dev information
 

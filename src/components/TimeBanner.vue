@@ -95,7 +95,7 @@ export default defineComponent({
   methods: {
     handleKeyPress(e: KeyboardEvent) {
       if (!this.isSettingsOpen) {
-        if (e.code == 'Tab' || e.code == 'Enter') {
+        if (e.code == 'Tab' || e.key === 'Control') {
           ;(this.$refs as any).matchTimer.toggleRun()
         } else if (e.key == 'Shift') {
           ;(this.$refs as any).pinTimer.toggleRun()
