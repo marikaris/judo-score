@@ -95,15 +95,15 @@ export default defineComponent({
   methods: {
     handleKeyPress(e: KeyboardEvent) {
       if (!this.isSettingsOpen) {
-        if (e.code == 'Tab' || e.key === 'Control') {
+        if (e.code === 'Tab' || e.key === 'Control') {
           ;(this.$refs as any).matchTimer.toggleRun()
-        } else if (e.key == 'Shift') {
+        } else if (e.key === 'Shift') {
           ;(this.$refs as any).pinTimer.toggleRun()
-        } else if (e.key == 'r' || e.key == 'R') {
+        } else if (e.key === 'r' || e.key === 'R') {
           this.resetAll()
-        } else if (e.key == 't' || e.key == 'T') {
+        } else if (e.key === 't' || e.key === 'T') {
           this.resetTime()
-        } else if (e.key == 'g' || e.key == 'G') {
+        } else if (e.key === 'g' || e.key === 'G') {
           this.runGoldenScore()
         }
       }
