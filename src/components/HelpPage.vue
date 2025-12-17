@@ -15,7 +15,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <h1>Key bindings</h1>
+        <h1 style="padding-top: 25px;">Key bindings</h1>
         To make use of the tool easier, a couple keys are bound to functions in the tool. See the
         table below for all available key bindings:
         <div class="row g-3 align-items-start">
@@ -139,7 +139,7 @@
             Ippon increases by 1).
           </li>
           <li>
-            When a player receives an Ippon, they immediately win the bout. If the setting
+            When a player receives an Ippon, they immediately win the match. If the setting
             “Ippon stops time” is enabled, the match timer is stopped automatically.
           </li>
           <li>
