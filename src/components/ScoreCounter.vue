@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col">
         <h2>
-          <button class="btn btn-sm" @click="substract()">
+          <button class="btn btn-sm" @click="subtract()">
             <i class="bi bi-dash-lg"></i>
           </button>
           <span>{{ name }}</span>
@@ -50,7 +50,7 @@ export default defineComponent({
       this.count += 1
       this.$emit('add', this.count)
     },
-    substract() {
+    subtract() {
       if (this.count !== 0) {
         this.count -= 1
       }

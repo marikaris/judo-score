@@ -2,32 +2,29 @@
 
 # Judo Score Board
 
-Simple judo score board to use in competitions. Build and deploy on own server or try out the [demo](https://yuseigachi-score.netlify.app) on Netlify.
+Simple judo score board to use in competitions. Build and deploy on your own server or try out the [demo](https://yuseigachi-score.netlify.app) on Netlify.
 
 ## Key bindings
 
-| Key   | Result           |
-| ----- | ---------------- |
-| Tab   | Toggle timer     |
-| Shift | Toggle pin timer |
-| r     | Refresh all      |
-| t     | Refresh timers   |
-| g     | Golden score     |
-
-## Issues
-
-Submit issues via the github issue tracker.
-
-## Dev information
-
-## Recommended IDE Setup
-
-[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).
-
-## Type Support for `.vue` Imports in TS
-
-TypeScript cannot handle type information for `.vue` imports by default, so we replace the `tsc` CLI with `vue-tsc` for type checking. In editors, we need [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) to make the TypeScript language service aware of `.vue` types.
-
+| Key          | Result               |
+|--------------|----------------------|
+| Tab, Control | Toggle timer         |
+| Shift        | Toggle pin timer     |
+| r, R         | Refresh all          |
+| t, T         | Refresh timers       |
+| g, G         | Golden score         |
+| a, A         | Player 1 Ippon +1    |
+| z, Z         | Player 1 Ippon -1    |
+| s, S         | Player 1 Waza-ari +1 |
+| x, X         | Player 1 Waza-ari -1 |
+| d, D         | Player 1 Yuko +1     |
+| c, C         | Player 1 Yuko -1     |
+| j,J          | Player 2 Ippon +1    |
+| m,M          | Player 2 Ippon -1    |
+| k,K          | Player 2 Waza-ari +1 |
+| `,`          | Player 2 Waza-ari -1 |
+| l, L         | Player 2 Yuko +1     |
+| `.`          | Player 2 Yuko -1     |
 ## Customize configuration
 
 See [Vite Configuration Reference](https://vitejs.dev/config/).
