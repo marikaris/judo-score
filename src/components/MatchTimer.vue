@@ -25,6 +25,7 @@
 
 <script lang="ts">
 import { convertSecondsToMinutes, getTimer } from '@/utils/utils'
+import { getStartTime, tickMatchTime } from '@/utils/matchTimerLogic'
 import { defineComponent } from 'vue'
 
 export default defineComponent({
@@ -41,7 +42,7 @@ export default defineComponent({
   },
   methods: {
     getStartTime() {
-      return this.isCountdown ? this.maxTime : 0
+      return getStartTime(this.isCountdown, this.maxTime)
     },
     resetTime() {
       this.timeInSeconds = this.getStartTime()
@@ -60,14 +61,10 @@ export default defineComponent({
     run() {
       this.running = true
       this.timer = getTimer(() => {
-        if (this.isCountdown) {
-          if (this.timeInSeconds !== 0) {
-            this.timeInSeconds--
-          } else {
-            this.stop()
-          }
-        } else {
-          this.timeInSeconds++
+        const { nextTimeInSeconds, shouldStop } = tickMatchTime(this.timeInSeconds, this.isCountdown)
+        this.timeInSeconds = nextTimeInSeconds
+        if (shouldStop) {
+          this.stop()
         }
       })
     },

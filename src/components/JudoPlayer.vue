@@ -98,13 +98,15 @@ export default defineComponent({
     processWazaari(value: number) {
       if (value === 2) {
         ;(this.$refs as any).wazaari.reset()
-        this.$refs.ippon.add()
+        ;(this.$refs as any).ippon.add()
       }
     },
     reset() {
       ;(this.$refs as any).ippon.reset()
       ;(this.$refs as any).wazaari.reset()
-      ;(this.$refs as any).yuko.reset()
+      if (this.useYuko) {
+        ;(this.$refs as any).yuko.reset()
+      }
       ;(this.$refs as any).shido.reset()
     }
   },
