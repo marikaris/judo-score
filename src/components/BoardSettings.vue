@@ -85,6 +85,7 @@
           <div class="col-3">
             <br />
             <form>
+              <div class="mb-1 fw-semibold">Age group / timer strategy</div>
               <div class="form-check">
                 <input
                   class="form-check-input"
@@ -93,9 +94,10 @@
                   id="flexRadioDefault1"
                   value="down"
                   v-model="countdown"
-                  checked
                 />
-                <label class="form-check-label" for="flexRadioDefault1"> Count down </label>
+                <label class="form-check-label" for="flexRadioDefault1">
+                  13- (count down from max time)
+                </label>
               </div>
               <div class="form-check">
                 <input
@@ -106,7 +108,9 @@
                   value="up"
                   v-model="countdown"
                 />
-                <label class="form-check-label" for="flexRadioDefault2"> Count up </label>
+                <label class="form-check-label" for="flexRadioDefault2">
+                  13+ (count up from 0 until stopped)
+                </label>
               </div>
             </form>
           </div>
@@ -133,11 +137,26 @@
 import { convertSecondsToMinutes } from '@/utils/utils'
 import { defineComponent } from 'vue'
 
+const COUNTDOWN_STORAGE_KEY = 'judo-score:countdown'
+
 export default defineComponent({
   name: 'BoardSettings',
   emits: ['saveSettings'],
   methods: {
     convertSecondsToMinutes
+  },
+  created() {
+    const stored = window.localStorage.getItem(COUNTDOWN_STORAGE_KEY)
+    if (stored === 'down' || stored === 'up') {
+      this.countdown = stored
+    }
+  },
+  watch: {
+    countdown(newValue: string) {
+      if (newValue === 'down' || newValue === 'up') {
+        window.localStorage.setItem(COUNTDOWN_STORAGE_KEY, newValue)
+      }
+    }
   },
   data() {
     return {

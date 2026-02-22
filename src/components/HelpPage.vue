@@ -13,6 +13,19 @@
       Source code can be found on
       <a href="https://github.com/marikaris/judo-score/" taret="_blank">GitHub</a>.
     </div>
+    <div class="row mt-4">
+      <div class="col">
+        <h1>Timer modes (age groups)</h1>
+        <p>
+          In <b>Settings → Time</b> you can select the timer strategy. This setting is stored and
+          will stay the same until you change it again.
+        </p>
+        <ul>
+          <li><b>13-</b>: counts down from the configured <b>Max time</b> to <b>00:00</b> and stops.</li>
+          <li><b>13+</b>: counts up from <b>00:00</b> until you stop the timer.</li>
+        </ul>
+      </div>
+    </div>
     <div class="row">
       <div class="col">
         <h1 style="padding-top: 25px;">Key bindings</h1>
@@ -155,7 +168,8 @@
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import keyboardSvg from '../../docs/assets/KeyboardLayoutConfig.svg'
+
+const keyboardSvg = new URL('../../docs/assets/KeyboardLayoutConfig.svg', import.meta.url).href
 
 export default defineComponent({
   name: 'HelpPage',

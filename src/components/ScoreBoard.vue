@@ -61,6 +61,10 @@ export default defineComponent({
     BoardSettings,
     HelpPage
   },
+  mounted() {
+    // Sync initial state from persisted settings (e.g., timer strategy) once refs are available.
+    this.onSettingsChange()
+  },
   methods: {
     stopTimeIfWin() {
       if (this.ipponStopsTime) {
@@ -84,7 +88,7 @@ export default defineComponent({
       ;(this.$refs as any).p2.reset()
     },
     saveSettings() {
-      this.$refs.topBanner.toggleSettings()
+      ;(this.$refs as any).topBanner.toggleSettings()
     },
     toggleHelp() {
       this.helpOpen = !this.helpOpen
@@ -92,8 +96,8 @@ export default defineComponent({
     toggleSettings() {
       this.settingsOpen = !this.settingsOpen
       if (!this.settingsOpen) {
-        this.$refs.timeBanner.goldenScore = false
-        this.$refs.timeBanner.maximumTime = this.maxTime
+        ;(this.$refs as any).timeBanner.goldenScore = false
+        ;(this.$refs as any).timeBanner.maximumTime = this.maxTime
         this.onSettingsChange()
       }
     }

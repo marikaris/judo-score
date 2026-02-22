@@ -56,6 +56,7 @@
 import { defineComponent } from 'vue'
 import MatchTimer from '@/components/MatchTimer.vue'
 import PinningTimer from '@/components/PinningTimer.vue'
+import { toggleGoldenScoreMaximumTime } from '@/utils/goldenScore'
 
 export default defineComponent({
   name: 'TimeBanner',
@@ -109,12 +110,12 @@ export default defineComponent({
       }
     },
     runGoldenScore() {
-      this.goldenScore = !this.goldenScore
-      if (this.goldenScore) {
-        this.maximumTime = 60
-      } else {
-        this.maximumTime = this.maxTime
-      }
+      const { goldenScore, maximumTimeSeconds } = toggleGoldenScoreMaximumTime(
+        this.goldenScore,
+        this.maxTime
+      )
+      this.goldenScore = goldenScore
+      this.maximumTime = maximumTimeSeconds
       this.resetTime()
     },
     stopTimer() {
