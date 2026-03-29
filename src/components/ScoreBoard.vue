@@ -8,44 +8,48 @@
       :boutName="boutTxt"
       @openSettingsEvent="toggleSettings"
       @openHelpEvent="toggleHelp"
+      @openBreakPageEvent="toggleBreakPage"
     />
-    <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="saveSettings" />
-    <HelpPage ref="help" v-show="helpOpen" />
-    <div v-show="!settingsOpen && !helpOpen">
-      <JudoPlayer
-        @wins="stopTimeIfWin"
-        @loses="processLoss('p1')"
-        ref="p1"
-        :name="player1"
-        :player="1"
-        class="bg-white"
-        style="height: 35vh"
-        :useYuko="useYuko"
-        :maxShidos="maxShidos"
-      >
-        ></JudoPlayer
-      >
-      <JudoPlayer
-        @wins="stopTimeIfWin"
-        @loses="processLoss('p2')"
-        ref="p2"
-        :name="player2"
-        :player="2"
-        class="bg-danger"
-        style="height: 35vh"
-        :useYuko="useYuko"
-        :maxShidos="maxShidos"
-      ></JudoPlayer>
-      <TimeBanner
-        :key="maxTime"
-        @reset="bout += 1"
-        @resetAll="resetScore"
-        :maxTime="maxTime"
-        :isCountdown="isCountdown"
-        :players="[player1, player2]"
-        :isSettingsOpen="settingsOpen"
-        ref="timeBanner"
-      />
+    <BreakPage v-if="onBreak" :mat="mat" />
+    <div v-else>
+      <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="saveSettings" />
+      <HelpPage ref="help" v-show="helpOpen" />
+      <div v-show="!settingsOpen && !helpOpen">
+        <JudoPlayer
+          @wins="stopTimeIfWin"
+          @loses="processLoss('p1')"
+          ref="p1"
+          :name="player1"
+          :player="1"
+          class="bg-white"
+          style="height: 35vh"
+          :useYuko="useYuko"
+          :maxShidos="maxShidos"
+        >
+          ></JudoPlayer
+        >
+        <JudoPlayer
+          @wins="stopTimeIfWin"
+          @loses="processLoss('p2')"
+          ref="p2"
+          :name="player2"
+          :player="2"
+          class="bg-danger"
+          style="height: 35vh"
+          :useYuko="useYuko"
+          :maxShidos="maxShidos"
+        ></JudoPlayer>
+        <TimeBanner
+          :key="maxTime"
+          @reset="bout += 1"
+          @resetAll="resetScore"
+          :maxTime="maxTime"
+          :isCountdown="isCountdown"
+          :players="[player1, player2]"
+          :isSettingsOpen="settingsOpen"
+          ref="timeBanner"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -57,6 +61,7 @@ import JudoPlayer from '@/components/JudoPlayer.vue'
 import TimeBanner from '@/components/TimeBanner.vue'
 import BoardSettings from '@/components/BoardSettings.vue'
 import HelpPage from '@/components/HelpPage.vue'
+import BreakPage from '@/components/BreakPage.vue'
 
 export default defineComponent({
   name: 'ScoreBoard',
@@ -65,7 +70,8 @@ export default defineComponent({
     JudoPlayer,
     TimeBanner,
     BoardSettings,
-    HelpPage
+    HelpPage,
+    BreakPage
   },
   mounted() {
     // Sync initial state from persisted settings (e.g., timer strategy) once refs are available.
@@ -108,6 +114,9 @@ export default defineComponent({
     toggleHelp() {
       this.helpOpen = !this.helpOpen
     },
+    toggleBreakPage() {
+      this.onBreak = !this.onBreak
+    },
     toggleSettings() {
       this.settingsOpen = !this.settingsOpen
       if (!this.settingsOpen) {
@@ -132,6 +141,7 @@ export default defineComponent({
     ipponStopsTime: boolean
     isCountdown: boolean
     useYuko: boolean
+    onBreak: boolean
   } {
     return {
       mat: 'Mat 1',
@@ -147,7 +157,8 @@ export default defineComponent({
       ipponStopsTime: true,
       isCountdown: true,
       useYuko: true,
-      maxShidos: 3
+      maxShidos: 3,
+      onBreak: false
     }
   }
 })

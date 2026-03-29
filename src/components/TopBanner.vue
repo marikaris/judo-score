@@ -18,6 +18,10 @@
         <span v-if="settingsOpen"><i class="bi bi-x-lg"></i> Close</span>
         <span v-else><i class="bi bi-gear-fill"></i> Settings</span>
       </button>
+      <button class="btn btn-link float-end" @click="toggleResume">
+        <span v-if="resumeMatch"><i class="bi bi-pause-fill"></i> Break</span>
+        <span v-else><i class="bi bi-play-fill"></i> Resume</span>
+      </button>
     </div>
   </div>
 </template>
@@ -27,7 +31,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'TopBanner',
-  emits: ['openSettingsEvent', 'openHelpEvent'],
+  emits: ['openSettingsEvent', 'openHelpEvent', 'openBreakPageEvent'],
   methods: {
     toggleSettings() {
       this.$emit('openSettingsEvent')
@@ -36,12 +40,17 @@ export default defineComponent({
     toggleHelp() {
       this.$emit('openHelpEvent')
       this.helpOpen = !this.helpOpen
+    },
+    toggleResume() {
+      this.$emit('openBreakPageEvent')
+      this.resumeMatch = !this.resumeMatch
     }
   },
   data() {
     return {
       settingsOpen: false,
-      helpOpen: false
+      helpOpen: false,
+      resumeMatch: true
     }
   },
   props: {
