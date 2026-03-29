@@ -12,7 +12,7 @@
     <div class="col" v-if="useYuko">
       <ScoreCounter ref="yuko" @add="() => {}" name="Yuko" />
     </div>
-    <div class="col">
+    <div class="col" v-if="!hideShido">
       <ScoreCounter ref="shido" name="Shido" @add="processShido" />
     </div>
   </div>
@@ -132,6 +132,10 @@ export default defineComponent({
     maxShidos: {
       type: Number,
       default: 3
+    },
+    hideShido: {
+      type: Boolean,
+      default: true
     }
   },
   mounted() {

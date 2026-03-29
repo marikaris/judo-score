@@ -25,9 +25,8 @@
           style="height: 35vh"
           :useYuko="useYuko"
           :maxShidos="maxShidos"
-        >
-          ></JudoPlayer
-        >
+          :hideShido="hideShido"
+        />
         <JudoPlayer
           @wins="stopTimeIfWin"
           @loses="processLoss('p2')"
@@ -38,7 +37,8 @@
           style="height: 35vh"
           :useYuko="useYuko"
           :maxShidos="maxShidos"
-        ></JudoPlayer>
+          :hideShido="hideShido"
+        />
         <TimeBanner
           :key="maxTime"
           @reset="bout += 1"
@@ -95,6 +95,7 @@ export default defineComponent({
       this.useYuko = (this.$refs as any).settings.yuko
       this.mat = (this.$refs as any).settings.mat
       this.maxShidos = (this.$refs as any).settings.maxShidos
+      this.hideShido = (this.$refs as any).settings.hideShido
     },
     processLoss(player: string) {
       if (player === 'p1') {
@@ -142,6 +143,7 @@ export default defineComponent({
     isCountdown: boolean
     useYuko: boolean
     onBreak: boolean
+    hideShido: boolean
   } {
     return {
       mat: 'Mat 1',
@@ -158,7 +160,8 @@ export default defineComponent({
       isCountdown: true,
       useYuko: true,
       maxShidos: 3,
-      onBreak: false
+      onBreak: false,
+      hideShido: false
     }
   }
 })

@@ -35,13 +35,19 @@
             <label class="form-check-label" for="yuko"> Add yuko </label>
           </div>
         </div>
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="form-check col-3">
+            <input class="form-check-input" type="checkbox" id="hideShido" v-model="hideShido" />
+            <label class="form-check-label" for="hideShido"> Hide shido </label>
+          </div>
+        </div>
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> Max number of shido's: </label>
           <div class="col-sm-3">
-            <input type="number" class="form-control" v-model="maxShidos" />
+            <input type="number" class="form-control" v-model="maxShidos" :disabled="hideShido" />
           </div>
         </div>
-
         <h2>Players</h2>
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> Player 1 name: </label>
@@ -179,7 +185,8 @@ export default defineComponent({
       mat: 'Mat 1',
       boutTxt: 'Ronde',
       ipponStopsTime: true,
-      yuko: true
+      yuko: true,
+      hideShido: false
     }
   }
 })
