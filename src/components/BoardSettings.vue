@@ -35,6 +35,13 @@
             <label class="form-check-label" for="yuko"> Add yuko </label>
           </div>
         </div>
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label text-end"> Max number of shido's: </label>
+          <div class="col-sm-3">
+            <input type="number" class="form-control" v-model="maxShidos" />
+          </div>
+        </div>
+
         <h2>Players</h2>
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> Player 1 name: </label>
@@ -53,7 +60,7 @@
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> Max time: </label>
           <div class="col-sm-2">
-            <input type="string" class="form-control" v-model="maxMatchTime" />
+            <input type="number" class="form-control" v-model="maxMatchTime" />
           </div>
           <div class="col-sm-1">{{ convertSecondsToMinutes(maxMatchTime) }} min</div>
           <div class="col-sm-3">
@@ -64,7 +71,7 @@
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> Max pin time: </label>
           <div class="col-sm-2">
-            <input type="string" class="form-control" v-model="maxPinTime" />
+            <input type="number" class="form-control" v-model="maxPinTime" />
           </div>
           <div class="col-sm-1">sec</div>
         </div>
@@ -163,6 +170,7 @@ export default defineComponent({
       countdown: 'down',
       maxMatchTime: 120,
       maxPinTime: 20,
+      maxShidos: 3,
       p1: 'Player 1',
       p2: 'Player 2',
       colP1: 'white',

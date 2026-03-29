@@ -14,21 +14,27 @@
     <div v-show="!settingsOpen && !helpOpen">
       <JudoPlayer
         @wins="stopTimeIfWin"
+        @loses="processLoss('p1')"
         ref="p1"
         :name="player1"
         :player="1"
         class="bg-white"
         style="height: 35vh"
         :useYuko="useYuko"
-      ></JudoPlayer>
+        :maxShidos="maxShidos"
+      >
+        ></JudoPlayer
+      >
       <JudoPlayer
         @wins="stopTimeIfWin"
+        @loses="processLoss('p2')"
         ref="p2"
         :name="player2"
         :player="2"
         class="bg-danger"
         style="height: 35vh"
         :useYuko="useYuko"
+        :maxShidos="maxShidos"
       ></JudoPlayer>
       <TimeBanner
         :key="maxTime"
@@ -82,6 +88,15 @@ export default defineComponent({
       this.isCountdown = (this.$refs as any).settings.countdown == 'down' ? true : false
       this.useYuko = (this.$refs as any).settings.yuko
       this.mat = (this.$refs as any).settings.mat
+      this.maxShidos = (this.$refs as any).settings.maxShidos
+    },
+    processLoss(player: string) {
+      if (player === 'p1') {
+        ;(this.$refs as any).p2.triggerWin()
+      } else {
+        ;(this.$refs as any).p1.triggerWin()
+      }
+      this.stopTimeIfWin()
     },
     resetScore() {
       ;(this.$refs as any).p1.reset()
@@ -111,6 +126,7 @@ export default defineComponent({
     player2: string
     maxTime: number
     maxPinTime: number
+    maxShidos: number
     settingsOpen: boolean
     helpOpen: boolean
     ipponStopsTime: boolean
@@ -130,7 +146,8 @@ export default defineComponent({
       helpOpen: false,
       ipponStopsTime: true,
       isCountdown: true,
-      useYuko: true
+      useYuko: true,
+      maxShidos: 3
     }
   }
 })

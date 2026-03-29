@@ -13,7 +13,7 @@
       <ScoreCounter ref="yuko" @add="() => {}" name="Yuko" />
     </div>
     <div class="col">
-      <ScoreCounter ref="shido" name="Shido" />
+      <ScoreCounter ref="shido" name="Shido" @add="processShido" />
     </div>
   </div>
 </template>
@@ -27,8 +27,12 @@ export default defineComponent({
   components: {
     ScoreCounter
   },
-  emits: ['wins'],
+  emits: ['wins', 'loses'],
   methods: {
+    triggerWin() {
+      ;(this.$refs as any).ippon.add()
+      this.processIppon(1)
+    },
     handleKey(e: KeyboardEvent) {
       const key = e.key
       const isP1 = (this as any).player === 1
@@ -101,6 +105,11 @@ export default defineComponent({
         ;(this.$refs as any).ippon.add()
       }
     },
+    processShido(value: number) {
+      if (value === this.maxShidos) {
+        this.$emit('loses')
+      }
+    },
     reset() {
       ;(this.$refs as any).ippon.reset()
       ;(this.$refs as any).wazaari.reset()
@@ -119,6 +128,10 @@ export default defineComponent({
     useYuko: {
       type: Boolean,
       default: true
+    },
+    maxShidos: {
+      type: Number,
+      default: 3
     }
   },
   mounted() {
