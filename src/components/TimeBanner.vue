@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="col">
-      <MatchTimer ref="matchTimer" :maxTime="maximumTime" :isCountdown="isCountdown" />
+      <MatchTimer ref="matchTimer" :maxTime="maximumTime" :isCountdown="actualIsCountdown" />
     </div>
     <div class="col-2">
       <PinningTimer ref="pinTimer" />
@@ -87,6 +87,14 @@ export default defineComponent({
     }
   },
   emits: ['resetAll', 'reset'],
+  computed: {
+    actualIsCountdown(): boolean {
+      if (!this.goldenScore) {
+        return true // Always countdown for the match itself
+      }
+      return this.isCountdown
+    }
+  },
   data() {
     return {
       goldenScore: false,

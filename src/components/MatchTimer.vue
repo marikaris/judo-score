@@ -76,6 +76,9 @@ export default defineComponent({
   watch: {
     maxTime() {
       this.resetTime()
+    },
+    isCountdown() {
+      this.resetTime()
     }
   },
   computed: {
