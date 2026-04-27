@@ -13,6 +13,7 @@
     "build-only": "vite build",
     "type-check": "vue-tsc --build --force",
     "lint": "eslint . --ext .vue,.js,.jsx,.cjs,.mjs,.ts,.tsx,.cts,.mts --fix --ignore-path .gitignore",
+    "test": "jest",
     "format": "prettier --write src/",
     "electron:dev": "ELECTRON=true vite",
     "electron:build": "ELECTRON=true vite build && electron-builder"
