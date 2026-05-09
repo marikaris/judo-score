@@ -26,6 +26,7 @@
     "vue": "^3.4.27"
   },
   "devDependencies": {
+    "@electron/rebuild": "3.7.2",
     "@rushstack/eslint-patch": "^1.8.0",
     "@tsconfig/node20": "^20.1.4",
     "@types/node": "^20.12.7",
