@@ -40,3 +40,4 @@ src/utils/utils.js
 *.zip
 .yarn
 .yarn/**
+.vibecoding/
