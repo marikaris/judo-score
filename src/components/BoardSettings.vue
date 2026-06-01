@@ -27,6 +27,16 @@
             <input type="string" class="form-control" v-model="msg" />
           </div>
         </div>
+        <div class="row mb-3">
+          <label class="col-sm-3 col-form-label text-end"> Font scale: </label>
+          <div class="col-sm-2">
+            <input type="number" step="0.1" min="0.5" max="2" class="form-control" v-model="fontScale" />
+          </div>
+          <div class="col-sm-3">
+            <button class="btn btn-primary" @click.prevent="fontScale = Math.min(2, fontScale + 0.1)">+</button>
+            <button class="btn btn-primary" @click.prevent="fontScale = Math.max(0.5, fontScale - 0.1)">-</button>
+          </div>
+        </div>
         <h2>Score</h2>
         <div class="row">
           <div class="col-3"></div>
@@ -184,6 +194,7 @@ export default defineComponent({
       msg: 'Yuseigachi Norg',
       mat: 'Mat 1',
       boutTxt: 'Ronde',
+      fontScale: 1,
       ipponStopsTime: true,
       yuko: true,
       hideShido: false

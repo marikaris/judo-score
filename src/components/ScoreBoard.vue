@@ -96,6 +96,8 @@ export default defineComponent({
       this.mat = (this.$refs as any).settings.mat
       this.maxShidos = (this.$refs as any).settings.maxShidos
       this.hideShido = (this.$refs as any).settings.hideShido
+      this.fontScale = (this.$refs as any).settings.fontScale
+      document.documentElement.style.setProperty('--font-scale', this.fontScale.toString())
     },
     processLoss(player: string) {
       if (player === 'p1') {
@@ -144,6 +146,7 @@ export default defineComponent({
     useYuko: boolean
     onBreak: boolean
     hideShido: boolean
+    fontScale: number
   } {
     return {
       mat: 'Mat 1',
@@ -161,7 +164,8 @@ export default defineComponent({
       useYuko: true,
       maxShidos: 3,
       onBreak: false,
-      hideShido: false
+      hideShido: false,
+      fontScale: 1
     }
   }
 })
