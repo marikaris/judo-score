@@ -9,10 +9,14 @@ import ScoreBoard from './components/ScoreBoard.vue'
 </script>
 
 <style>
+:root {
+  --font-scale: 1;
+}
+
 .super-big {
-  font-size: 7rem;
+  font-size: calc(7rem * var(--font-scale));
 }
 .big {
-  font-size: 5rem;
+  font-size: calc(5rem * var(--font-scale));
 }
 </style>
