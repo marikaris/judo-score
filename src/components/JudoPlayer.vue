@@ -116,7 +116,9 @@ export default defineComponent({
       if (this.useYuko) {
         ;(this.$refs as any).yuko.reset()
       }
-      ;(this.$refs as any).shido.reset()
+      if ((this.$refs as any).shido) {
+        ;(this.$refs as any).shido.reset()
+      }
     }
   },
   props: {
