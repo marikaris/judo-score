@@ -61,7 +61,10 @@ export default defineComponent({
     run() {
       this.running = true
       this.timer = getTimer(() => {
-        const { nextTimeInSeconds, shouldStop } = tickMatchTime(this.timeInSeconds, this.isCountdown)
+        const { nextTimeInSeconds, shouldStop } = tickMatchTime(
+          this.timeInSeconds,
+          this.isCountdown
+        )
         this.timeInSeconds = nextTimeInSeconds
         if (shouldStop) {
           this.stop()

@@ -22,7 +22,7 @@
           :name="player1"
           :player="1"
           class="bg-white"
-          style="height: 35vh"
+          :style="'height: ' + getPlayerBannerSize"
           :useYuko="useYuko"
           :maxShidos="maxShidos"
           :hideShido="hideShido"
@@ -34,7 +34,7 @@
           :name="player2"
           :player="2"
           class="bg-danger"
-          style="height: 35vh"
+          :style="'height: ' + getPlayerBannerSize"
           :useYuko="useYuko"
           :maxShidos="maxShidos"
           :hideShido="hideShido"
@@ -126,6 +126,15 @@ export default defineComponent({
         ;(this.$refs as any).timeBanner.goldenScore = false
         ;(this.$refs as any).timeBanner.maximumTime = this.maxTime
         this.onSettingsChange()
+      }
+    }
+  },
+  computed: {
+    getPlayerBannerSize() {
+      if (this.fontScale < 1.3) {
+        return '35vh'
+      } else {
+        return ''
       }
     }
   },
