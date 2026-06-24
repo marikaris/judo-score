@@ -22,7 +22,7 @@
           :name="player1"
           :player="1"
           class="bg-white"
-          style="height: 35vh"
+          :style="'height: ' + getPlayerBannerSize"
           :useYuko="useYuko"
           :maxShidos="maxShidos"
           :hideShido="hideShido"
@@ -34,12 +34,13 @@
           :name="player2"
           :player="2"
           class="bg-danger"
-          style="height: 35vh"
+          :style="'height: ' + getPlayerBannerSize"
           :useYuko="useYuko"
           :maxShidos="maxShidos"
           :hideShido="hideShido"
         />
         <TimeBanner
+          :class="fontScale < 1.8 ? (fontScale < 1.3 ? 'pt-3' : 'pt-5') : ''"
           :key="maxTime"
           @reset="bout += 1"
           @resetAll="resetScore"
@@ -126,6 +127,17 @@ export default defineComponent({
         ;(this.$refs as any).timeBanner.goldenScore = false
         ;(this.$refs as any).timeBanner.maximumTime = this.maxTime
         this.onSettingsChange()
+      }
+    }
+  },
+  computed: {
+    getPlayerBannerSize() {
+      if (this.fontScale < 1.3) {
+        return '35vh'
+      } else if (this.fontScale > 1.2 && this.fontScale < 1.8) {
+        return '30vh'
+      } else {
+        return ''
       }
     }
   },
