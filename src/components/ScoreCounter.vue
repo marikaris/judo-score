@@ -16,8 +16,9 @@
     <div class="row">
       <div class="col d-flex justify-content-center">
         <h1
-          class="super-big"
-          :class="name === 'Shido' ? 'bg-warning text-danger border border-danger' : ''"
+          :class="
+            name === 'Shido' ? 'bg-warning text-danger border border-danger big' : 'super-big'
+          "
           @click="add()"
         >
           {{ count }}

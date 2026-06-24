@@ -40,7 +40,6 @@
           :hideShido="hideShido"
         />
         <TimeBanner
-          :class="fontScale < 1.8 ? (fontScale < 1.3 ? 'pt-3' : 'pt-5') : ''"
           :key="maxTime"
           @reset="bout += 1"
           @resetAll="resetScore"
@@ -134,8 +133,6 @@ export default defineComponent({
     getPlayerBannerSize() {
       if (this.fontScale < 1.3) {
         return '35vh'
-      } else if (this.fontScale > 1.2 && this.fontScale < 1.8) {
-        return '30vh'
       } else {
         return ''
       }
