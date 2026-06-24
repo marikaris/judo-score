@@ -52,3 +52,17 @@ yarn build
 ```sh
 yarn lint
 ```
+
+## Electron Build
+
+### Compile and Hot-Reload for Electron Development
+
+```sh
+yarn electron:dev
+```
+
+### Build and Package for Electron (Portable version)
+
+```sh
+yarn electron:build
+```
