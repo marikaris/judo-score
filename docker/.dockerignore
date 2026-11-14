@@ -1,0 +1,11 @@
+node_modules
+dist
+docs
+.git
+.vscode
+.yarn/cache
+.yarn/install-state.gz
+*.log
+Dockerfile
+.dockerignore
+docker-compose.yml
