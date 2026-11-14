@@ -1,22 +1,23 @@
 <template>
-  <main>
-    <ScoreBoard />
+  <main class="app-wrapper">
+    <div 
+      class="kiosk-container" 
+      :style="{ 
+        width: `${baseWidth}px`, 
+        height: `${baseHeight}px`, 
+        transform: `scale(${kioskScale})` 
+      }"
+    >
+      <ScoreBoard />
+    </div>
   </main>
 </template>
 
 <script setup lang="ts">
 import ScoreBoard from './components/ScoreBoard.vue'
+import { useKioskScaling } from './composables/useKioskScaling'
+import './assets/css/kiosk.css' // Import the global styles
+
+// Initialize the composable
+const { kioskScale, baseWidth, baseHeight } = useKioskScaling(1920, 1080)
 </script>
-
-<style>
-:root {
-  --font-scale: 1;
-}
-
-.super-big {
-  font-size: calc(7rem * var(--font-scale));
-}
-.big {
-  font-size: calc(5rem * var(--font-scale));
-}
-</style>

@@ -1,0 +1,73 @@
+/* Root variables */
+:root {
+  --font-scale: 1;
+}
+
+/* Base styles to prevent scrolling and handle letterboxing */
+body {
+  margin: 0;
+  overflow: hidden;
+  background-color: #000; /* Black bars if aspect ratio doesn't match */
+}
+
+/* The wrapper that centers the scaled app */
+.app-wrapper {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* The fixed-resolution container */
+.kiosk-container {
+  /* Design height of the board; inner layout is sized off this, not the viewport */
+  --board-height: 1080px;
+  transform-origin: center center;
+  /* Optional: gives the app a white background inside the black bars */
+  background-color: white;
+}
+
+/* The board fills the fixed container exactly (no gaps/overflow on any display) */
+.kiosk-board {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Everything below the top banner (settings/help overlays or the match view) */
+.kiosk-board-main {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* The match view (players + time banner) */
+.kiosk-board-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Player rows sized relative to the fixed board height (35% of 1080 = 378px),
+   so the layout is identical on every display size */
+.player-height {
+  flex: 0 0 auto;
+  height: calc(var(--board-height) * 0.35);
+}
+
+/* The time banner absorbs the remaining height */
+.kiosk-time-banner {
+  flex: 1;
+  min-height: 0;
+}
+
+/* Global Font utilities */
+.super-big {
+  font-size: calc(7rem * var(--font-scale));
+}
+.big {
+  font-size: calc(5rem * var(--font-scale));
+}
