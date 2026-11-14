@@ -26,6 +26,7 @@
           :useYuko="useYuko"
           :maxShidos="maxShidos"
           :hideShido="hideShido"
+          :keysDisabled="settingsOpen || helpOpen || onBreak"
         />
         <JudoPlayer
           @wins="stopTimeIfWin"
@@ -38,6 +39,7 @@
           :useYuko="useYuko"
           :maxShidos="maxShidos"
           :hideShido="hideShido"
+          :keysDisabled="settingsOpen || helpOpen || onBreak"
         />
         <TimeBanner
           :key="maxTime"
