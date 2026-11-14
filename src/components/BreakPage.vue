@@ -21,7 +21,7 @@ export default defineComponent({
   }
 })
 </script>
-<style :scoped>
+<style scoped>
 .veryBig {
   font-size: 30em;
 }
