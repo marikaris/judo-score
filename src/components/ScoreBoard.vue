@@ -11,7 +11,7 @@
       @openBreakPageEvent="toggleBreakPage"
     />
     <BreakPage v-if="onBreak" :mat="mat" />
-    <div v-else>
+    <div v-show="!onBreak">
       <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="saveSettings" />
       <HelpPage ref="help" v-show="helpOpen" />
       <div v-show="!settingsOpen && !helpOpen">
