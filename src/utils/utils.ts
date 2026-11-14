@@ -24,3 +24,21 @@ export function convertSecondsToMinutes(timeInSeconds: number) {
   const minutes = pad(parseInt(String(timeInSeconds / 60)))
   return minutes + ':' + seconds
 }
+
+/**
+ * Turns a form value into a number within [min, max].
+ * Falls back to `fallback` for empty or invalid values: an emptied
+ * number input yields '' instead of a number.
+ */
+export function sanitizeNumber(
+  value: unknown,
+  fallback: number,
+  min: number,
+  max: number
+): number {
+  const num = typeof value === 'number' ? value : parseFloat(String(value))
+  if (Number.isNaN(num)) {
+    return fallback
+  }
+  return Math.min(Math.max(num, min), max)
+}
