@@ -44,6 +44,7 @@
           @reset="bout += 1"
           @resetAll="resetScore"
           :maxTime="maxTime"
+          :maxPinTime="maxPinTime"
           :isCountdown="isCountdown"
           :players="[player1, player2]"
           :isSettingsOpen="settingsOpen"
