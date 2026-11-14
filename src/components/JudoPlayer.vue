@@ -4,7 +4,7 @@
       <h1 class="align-middle">{{ name }}</h1>
     </div>
     <div class="col">
-      <ScoreCounter ref="ippon" @add="processIppon" name="Ippon" />
+      <ScoreCounter ref="ippon" @add="processIppon" @subtract="processIpponUndo" name="Ippon" />
     </div>
     <div class="col">
       <ScoreCounter ref="wazaari" @add="processWazaari" name="Waza-ari" />
@@ -13,7 +13,7 @@
       <ScoreCounter ref="yuko" @add="() => {}" name="Yuko" />
     </div>
     <div class="col" v-if="!hideShido">
-      <ScoreCounter ref="shido" name="Shido" @add="processShido" />
+      <ScoreCounter ref="shido" name="Shido" @add="processShido" @subtract="processShidoUndo" />
     </div>
   </div>
 </template>
@@ -27,11 +27,18 @@ export default defineComponent({
   components: {
     ScoreCounter
   },
-  emits: ['wins', 'loses'],
+  emits: ['wins', 'loses', 'winUndone', 'shidoUndone'],
+  data(): { ipponSource: string; pendingIpponSource: string } {
+    return { ipponSource: '', pendingIpponSource: '' }
+  },
   methods: {
     triggerWin() {
-      ;(this.$refs as any).ippon.add()
-      this.processIppon(1)
+      this.pendingIpponSource = 'shido'
+      const ippon = (this.$refs as any).ippon
+      ippon.add()
+      if (ippon.count > 1) {
+        this.$emit('wins')
+      }
     },
     handleKey(e: KeyboardEvent) {
       const key = e.key
@@ -95,13 +102,24 @@ export default defineComponent({
       }
     },
     processIppon(value: number) {
+      this.ipponSource = this.pendingIpponSource || 'manual'
+      this.pendingIpponSource = ''
       if (value == 1) {
         this.$emit('wins')
       }
     },
+    processIpponUndo() {
+      const source = this.ipponSource
+      this.ipponSource = ''
+      if (source === 'wazaari') {
+        ;(this.$refs as any).wazaari.set(1)
+      }
+      this.$emit('winUndone')
+    },
     processWazaari(value: number) {
       if (value === 2) {
         ;(this.$refs as any).wazaari.reset()
+        this.pendingIpponSource = 'wazaari'
         ;(this.$refs as any).ippon.add()
       }
     },
@@ -109,6 +127,23 @@ export default defineComponent({
       if (value === this.maxShidos) {
         this.$emit('loses')
       }
+    },
+    processShidoUndo(value: number) {
+      if (value === this.maxShidos - 1) {
+        this.$emit('shidoUndone')
+      }
+    },
+    undoShidoWin() {
+      if (this.ipponSource !== 'shido') {
+        return
+      }
+      const ippon = (this.$refs as any).ippon
+      ippon.set(Math.max(0, ippon.count - 1))
+      this.ipponSource = ''
+      this.$emit('winUndone')
+    },
+    hasIppon() {
+      return (this.$refs as any).ippon.count > 0
     },
     reset() {
       ;(this.$refs as any).ippon.reset()
@@ -119,6 +154,8 @@ export default defineComponent({
       if ((this.$refs as any).shido) {
         ;(this.$refs as any).shido.reset()
       }
+      this.ipponSource = ''
+      this.pendingIpponSource = ''
     }
   },
   props: {

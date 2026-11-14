@@ -129,6 +129,12 @@ export default defineComponent({
     stopTimer() {
       ;(this.$refs as any).matchTimer.stop()
     },
+    resumeTimer() {
+      const matchTimer = (this.$refs as any).matchTimer
+      if (!matchTimer.running) {
+        matchTimer.run()
+      }
+    },
     resetTime() {
       this.$emit('reset')
       ;(this.$refs.matchTimer as any).resetTime()
