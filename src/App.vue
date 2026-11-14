@@ -9,6 +9,10 @@ import ScoreBoard from './components/ScoreBoard.vue'
 </script>
 
 <style>
+body {
+  line-height: 1 !important;
+}
+
 :root {
   --font-scale: 1;
 }

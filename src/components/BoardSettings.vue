@@ -29,12 +29,33 @@
         </div>
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> Font scale: </label>
-          <div class="col-sm-2">
-            <input type="number" step="0.1" min="0.5" max="2" class="form-control" v-model="fontScale" />
+          <div class="col-sm-3">
+            <input
+              class="mt-2"
+              style="width: 85%"
+              type="range"
+              min="0.5"
+              max="2"
+              step="0.1"
+              v-model="fontScale"
+            />
+            <label for="font-range" class="form-label ms-3">
+              {{ Math.round(fontScale * 100) }}%
+            </label>
           </div>
           <div class="col-sm-3">
-            <button class="btn btn-primary" @click.prevent="fontScale = Math.min(2, fontScale + 0.1)">+</button>
-            <button class="btn btn-primary" @click.prevent="fontScale = Math.max(0.5, fontScale - 0.1)">-</button>
+            <button
+              class="btn btn-primary"
+              @click.prevent="fontScale = Math.round(Math.min(2, fontScale + 0.1) * 10) / 10"
+            >
+              +
+            </button>
+            <button
+              class="btn btn-primary"
+              @click.prevent="fontScale = Math.round(Math.max(0.5, fontScale - 0.1) * 10) / 10"
+            >
+              -
+            </button>
           </div>
         </div>
         <h2>Score</h2>
