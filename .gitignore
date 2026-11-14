@@ -10,6 +10,8 @@ lerna-debug.log*
 node_modules
 .DS_Store
 dist
+dist-electron
+release
 dist-ssr
 coverage
 *.local
@@ -40,3 +42,4 @@ src/utils/utils.js
 *.zip
 .yarn
 .yarn/**
+package-lock.json
