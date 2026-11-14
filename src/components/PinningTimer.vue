@@ -76,6 +76,9 @@ export default defineComponent({
       clearInterval(this.timer)
     }
   },
+  beforeUnmount() {
+    this.stop()
+  },
   data(): { timeInSeconds: number; running: boolean; timer: any; prevPinnings: Array<number> } {
     return {
       timeInSeconds: 0,
