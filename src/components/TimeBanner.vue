@@ -130,7 +130,6 @@ export default defineComponent({
       ;(this.$refs as any).matchTimer.stop()
     },
     resetTime() {
-      this.$emit('reset')
       ;(this.$refs.matchTimer as any).resetTime()
     },
     resetAll() {
@@ -139,6 +138,8 @@ export default defineComponent({
       ;(this.$refs.pinTimer as any).clearPrev()
       ;(this.$refs.pinTimer as any).resetTime()
       this.resetTime()
+      // only a full reset starts a new bout: golden score continues the current one (#47)
+      this.$emit('reset')
       this.$emit('resetAll')
     }
   },
