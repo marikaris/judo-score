@@ -20,13 +20,13 @@
         </button>
         <div class="fst-italic pt-2 row" v-if="prevPinnings.length !== 0">
           <div class="col-2">
-            <button class="btn btn-sm btn-link">
-              <i class="bi bi-arrow-clockwise" @click="clearPrev"></i>
+            <button class="btn btn-sm btn-link" @click="clearPrev">
+              <i class="bi bi-arrow-clockwise"></i>
             </button>
           </div>
           <div class="col">History:</div>
         </div>
-        <div class="ps-5" v-for="pin in prevPinnings" :key="pin">{{ pin }} sec</div>
+        <div class="ps-5" v-for="(pin, index) in prevPinnings" :key="index">{{ pin }} sec</div>
       </div>
     </div>
   </div>
@@ -57,9 +57,7 @@ export default defineComponent({
     },
     toggleRun() {
       if (this.running) {
-        this.stop()
-        this.prevPinnings = prepend(this.timeInSeconds, this.prevPinnings)
-        this.resetTime()
+        this.finishPin()
       } else {
         this.run()
       }
@@ -68,8 +66,13 @@ export default defineComponent({
       this.resetTime()
       this.running = true
       this.timer = getTimer(() =>
-        this.timeInSeconds < this.maxTime ? this.timeInSeconds++ : this.stop()
+        this.timeInSeconds < this.maxTime ? this.timeInSeconds++ : this.finishPin()
       )
+    },
+    finishPin() {
+      this.stop()
+      this.prevPinnings = prepend(this.timeInSeconds, this.prevPinnings)
+      this.resetTime()
     },
     stop() {
       this.running = false
