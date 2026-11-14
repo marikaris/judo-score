@@ -3,15 +3,15 @@
     <div class="col">
       <h1>About</h1>
       This tool was created by
-      <a href="https://github.com/marikaris" taret="_blank">MariKariS</a>
+      <a href="https://github.com/marikaris" target="_blank" rel="noopener">MariKariS</a>
       under
-      <a href="https://github.com/marikaris/judo-score?tab=MIT-1-ov-file" taret="_blank"
+      <a href="https://github.com/marikaris/judo-score?tab=MIT-1-ov-file" target="_blank" rel="noopener"
         >MIT licence</a
       >. It is free to use as score board for judo competitions, without any warranty. Developer is
       not responsible for any bugs. If you do however encounter an issue, please submit it to the
-      <a href="https://github.com/marikaris/judo-score/issues" taret="_blank">GitHub issue page</a>.
+      <a href="https://github.com/marikaris/judo-score/issues" target="_blank" rel="noopener">GitHub issue page</a>.
       Source code can be found on
-      <a href="https://github.com/marikaris/judo-score/" taret="_blank">GitHub</a>.
+      <a href="https://github.com/marikaris/judo-score/" target="_blank" rel="noopener">GitHub</a>.
     </div>
     <div class="row mt-4">
       <div class="col">
