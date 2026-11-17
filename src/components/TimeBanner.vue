@@ -18,6 +18,10 @@
       </div>
     </div>
     <div class="col">
+      <!--
+        The :isCountdown="actualIsCountdown" function safeguards a count up once 13+ is enabled.
+        Read the comment at the function call site for more info.
+      -->
       <MatchTimer ref="matchTimer" :maxTime="maximumTime" :isCountdown="actualIsCountdown" />
     </div>
     <div class="col-2">
@@ -88,6 +92,11 @@ export default defineComponent({
   },
   emits: ['resetAll', 'reset'],
   computed: {
+    /*
+     This function safeguards for a count up bug that triggers when 13+ is selected.
+     This happens because goldenscore needs to count up in that scenario while the overall timer should count down.
+     Currently the strategy for both was showing the same behaviour which this function fixes. A durable fix should be considered.
+     */
     actualIsCountdown(): boolean {
       if (!this.goldenScore) {
         return true // Always countdown for the match itself
