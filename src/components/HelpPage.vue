@@ -1,87 +1,82 @@
 <template>
   <div class="row">
     <div class="col">
-      <h1>About</h1>
-      This tool was created by
-      <a href="https://github.com/marikaris" taret="_blank">MariKariS</a>
-      under
-      <a href="https://github.com/marikaris/judo-score?tab=MIT-1-ov-file" taret="_blank"
+      <h1>{{ $t('help.about') }}</h1>
+      {{ $t('help.intro') }}
+      <a href="https://github.com/marikaris" target="_blank">MariKariS</a>
+      {{ $t('help.under') }}
+      <a href="https://github.com/marikaris/judo-score?tab=MIT-1-ov-file" target="_blank"
         >MIT licence</a
-      >. It is free to use as score board for judo competitions, without any warranty. Developer is
-      not responsible for any bugs. If you do however encounter an issue, please submit it to the
-      <a href="https://github.com/marikaris/judo-score/issues" taret="_blank">GitHub issue page</a>.
-      Source code can be found on
-      <a href="https://github.com/marikaris/judo-score/" taret="_blank">GitHub</a>.
+      >.
+      {{ $t('help.licenceDescription') }}
+      <a href="https://github.com/marikaris/judo-score/issues" target="_blank">{{ $t('help.issuePage') }}</a>.
+      {{ $t('help.source') }}
+      <a href="https://github.com/marikaris/judo-score/" target="_blank">GitHub</a>.
     </div>
     <div class="row mt-4">
       <div class="col">
-        <h1>Timer modes (age groups)</h1>
+        <h1>{{ $t('help.timerModes') }}</h1>
         <p>
-          In <b>Settings → Time</b> you can select the timer strategy. This setting is stored and
-          will stay the same until you change it again.
+          {{ $t('help.timerModeDescription') }}
         </p>
         <ul>
-          <li><b>13-</b>: counts down from the configured <b>Max time</b> to <b>00:00</b> and stops.</li>
-          <li><b>13+</b>: counts up from <b>00:00</b> until you stop the timer.</li>
+          <li><b>13-</b>: {{ $t('help.countdownDescription') }}</li>
+          <li><b>13+</b>: {{ $t('help.countupDescription') }}</li>
         </ul>
       </div>
     </div>
     <div class="row">
       <div class="col">
-        <h1 style="padding-top: 25px;">Key bindings</h1>
-        To make use of the tool easier, a couple keys are bound to functions in the tool. See the
-        table below for all available key bindings:
+        <h1 style="padding-top: 25px;">{{ $t('help.keyBindings') }}</h1>
+        {{ $t('help.keyBindingsDescription') }}
         <div class="row g-3 align-items-start">
           <div class="col-12 col-lg-6">
             <table class="table">
               <tr>
-                <th>Key</th>
-                <th>Function</th>
+                <th>{{ $t('help.key') }}</th>
+                <th>{{ $t('help.function') }}</th>
               </tr>
               <tr>
                 <td>Tab, Control</td>
-                <td>Run timer</td>
+                <td>{{ $t('help.runTimer') }}</td>
               </tr>
               <tr>
                 <td>Shift</td>
-                <td>Run pin timer</td>
+                <td>{{ $t('help.runPinTimer') }}</td>
               </tr>
               <tr>
                 <td>r, R</td>
-                <td>Refresh all</td>
+                <td>{{ $t('help.refreshAll') }}</td>
               </tr>
               <tr>
                 <td>t, T</td>
-                <td>Refresh timers</td>
+                <td>{{ $t('help.refreshTimers') }}</td>
               </tr>
               <tr>
                 <td>g, G</td>
-                <td>Golden score</td>
+                <td>{{ $t('timer.goldenScore') }}</td>
               </tr>
             </table>
           </div>
           <div class="col-12 col-lg-6 d-flex justify-content-center">
             <img
               :src="keyboardSvg"
-              alt="Keyboard layout for player key bindings"
+              :alt="$t('help.keyboardLayout')"
               class="img-fluid"
               style="max-width: 600px; width: 100%"
             />
           </div>
         </div>
 
-        <h2>Add/Subtract scoring (keyboard)</h2>
-        <p>
-          Each player has dedicated keys for increasing (+) and decreasing (−) their scores. These
-          keys mirror the +/- buttons on the scoreboard and follow the rules below.
-        </p>
+        <h2>{{ $t('help.scoringKeyboard') }}</h2>
+        <p>{{ $t('help.scoringKeyboardDescription') }}</p>
         <div class="row">
           <div class="col-md-6">
-            <h3>Player 1</h3>
+            <h3>{{ $t('help.playerOne') }}</h3>
             <table class="table">
               <tr>
-                <th>Key</th>
-                <th>Result</th>
+                <th>{{ $t('help.key') }}</th>
+                <th>{{ $t('help.result') }}</th>
               </tr>
               <tr>
                 <td>a, A</td>
@@ -110,11 +105,11 @@
             </table>
           </div>
           <div class="col-md-6">
-            <h3>Player 2</h3>
+            <h3>{{ $t('help.playerTwo') }}</h3>
             <table class="table">
               <tr>
-                <th>Key</th>
-                <th>Result</th>
+                <th>{{ $t('help.key') }}</th>
+                <th>{{ $t('help.result') }}</th>
               </tr>
               <tr>
                 <td>j, J</td>
@@ -144,22 +139,13 @@
           </div>
         </div>
 
-        <h2>Scoring rules for additions and subtractions</h2>
+        <h2>{{ $t('help.scoringRules') }}</h2>
         <ul>
-          <li>Scores cannot go below 0. Subtracting at 0 has no effect.</li>
-          <li>
-            Two Waza-ari automatically convert to one Ippon (the Waza-ari counter resets to 0 and
-            Ippon increases by 1).
-          </li>
-          <li>
-            When a player receives an Ippon, they immediately win the match. If the setting
-            “Ippon stops time” is enabled, the match timer is stopped automatically.
-          </li>
-          <li>
-            Yuko can be disabled in Settings. When disabled, Yuko values are hidden and related key
-            bindings are ignored.
-          </li>
-          <li>You can also use the on-screen + / − buttons to change each score.</li>
+          <li>{{ $t('help.scoreCannotBeNegative') }}</li>
+          <li>{{ $t('help.twoWazaAri') }}</li>
+          <li>{{ $t('help.ipponWins') }}</li>
+          <li>{{ $t('help.yukoDisabled') }}</li>
+          <li>{{ $t('help.onScreenControls') }}</li>
         </ul>
       </div>
     </div>

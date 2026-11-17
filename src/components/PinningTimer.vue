@@ -24,9 +24,9 @@
               <i class="bi bi-arrow-clockwise" @click="clearPrev"></i>
             </button>
           </div>
-          <div class="col">History:</div>
+          <div class="col">{{ $t('timer.history') }}:</div>
         </div>
-        <div class="ps-5" v-for="pin in prevPinnings" :key="pin">{{ pin }} sec</div>
+        <div class="ps-5" v-for="pin in prevPinnings" :key="pin">{{ pin }} {{ $t('settings.seconds') }}</div>
       </div>
     </div>
   </div>

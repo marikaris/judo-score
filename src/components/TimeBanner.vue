@@ -1,19 +1,19 @@
 <template>
   <div class="row" :class="goldenScore ? 'bg-warning' : ''">
     <div class="col-3">
-      <div class="btn-group-vertical pt-5" role="group" aria-label="Vertical button group">
+      <div class="btn-group-vertical pt-5" role="group" :aria-label="$t('timer.controls')">
         <button class="btn btn-primary text-start" @click="resetTime">
-          <i class="bi bi-arrow-clockwise"></i> Reset timer
+          <i class="bi bi-arrow-clockwise"></i> {{ $t('timer.resetTimer') }}
         </button>
         <button class="btn btn-primary text-start" @click="resetAll">
-          <i class="bi bi-arrow-clockwise"></i> Reset all
+          <i class="bi bi-arrow-clockwise"></i> {{ $t('timer.resetAll') }}
         </button>
         <button
           class="btn text-start"
           :class="goldenScore ? 'btn-outline-dark' : 'btn-warning'"
           @click="runGoldenScore"
         >
-          <i class="bi bi-trophy-fill"></i> Golden score
+          <i class="bi bi-trophy-fill"></i> {{ $t('timer.goldenScore') }}
         </button>
       </div>
     </div>
@@ -28,7 +28,7 @@
         v-show="!goldenScore"
         class="btn-group-vertical"
         role="group"
-        aria-label="Vertical radio toggle button group"
+        :aria-label="$t('timer.playerSelector')"
       >
         <input
           type="radio"

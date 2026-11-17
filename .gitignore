@@ -40,3 +40,5 @@ src/utils/utils.js
 *.zip
 .yarn
 .yarn/**
+/.air/
+**/worktree.json

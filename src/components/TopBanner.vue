@@ -11,16 +11,16 @@
     </div>
     <div class="col">
       <button class="btn btn-link float-end" @click="toggleHelp">
-        <span v-if="helpOpen"><i class="bi bi-x-lg"></i> Close</span>
-        <span v-else><i class="bi bi-question-diamond-fill"></i> Help</span>
+        <span v-if="helpOpen"><i class="bi bi-x-lg"></i> {{ $t('navigation.close') }}</span>
+        <span v-else><i class="bi bi-question-diamond-fill"></i> {{ $t('navigation.help') }}</span>
       </button>
       <button class="btn btn-link float-end" @click="toggleSettings">
-        <span v-if="settingsOpen"><i class="bi bi-x-lg"></i> Close</span>
-        <span v-else><i class="bi bi-gear-fill"></i> Settings</span>
+        <span v-if="settingsOpen"><i class="bi bi-x-lg"></i> {{ $t('navigation.close') }}</span>
+        <span v-else><i class="bi bi-gear-fill"></i> {{ $t('navigation.settings') }}</span>
       </button>
       <button class="btn btn-link float-end" @click="toggleResume">
-        <span v-if="resumeMatch"><i class="bi bi-pause-fill"></i> Break</span>
-        <span v-else><i class="bi bi-play-fill"></i> Resume</span>
+        <span v-if="resumeMatch"><i class="bi bi-pause-fill"></i> {{ $t('navigation.break') }}</span>
+        <span v-else><i class="bi bi-play-fill"></i> {{ $t('navigation.resume') }}</span>
       </button>
     </div>
   </div>
@@ -54,7 +54,7 @@ export default defineComponent({
     }
   },
   props: {
-    boutName: { type: String, default: 'Ronde' },
+    boutName: { type: String, default: '' },
     bout: Number,
     message: String,
     mat: String
