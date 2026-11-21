@@ -34,6 +34,9 @@ export default defineComponent({
       this.processIppon(1)
     },
     handleKey(e: KeyboardEvent) {
+      if ((this as any).keysDisabled) {
+        return
+      }
       const key = e.key
       const isP1 = (this as any).player === 1
       const isP2 = (this as any).player === 2
@@ -138,6 +141,10 @@ export default defineComponent({
     hideShido: {
       type: Boolean,
       default: true
+    },
+    keysDisabled: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {
