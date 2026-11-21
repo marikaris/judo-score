@@ -112,6 +112,9 @@ export default defineComponent({
   },
   methods: {
     handleKeyPress(e: KeyboardEvent) {
+      if (e.ctrlKey || e.altKey || e.metaKey || e.repeat) {
+        return
+      }
       if (!this.isSettingsOpen) {
         if (e.code === 'Tab' || e.key === 'Control') {
           ;(this.$refs as any).matchTimer.toggleRun()

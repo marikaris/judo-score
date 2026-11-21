@@ -34,6 +34,9 @@ export default defineComponent({
       this.processIppon(1)
     },
     handleKey(e: KeyboardEvent) {
+      if (e.ctrlKey || e.altKey || e.metaKey || e.repeat) {
+        return
+      }
       const key = e.key
       const isP1 = (this as any).player === 1
       const isP2 = (this as any).player === 2
