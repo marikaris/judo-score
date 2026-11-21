@@ -38,7 +38,7 @@ import { defineComponent } from 'vue'
 
 export default defineComponent({
   name: 'ScoreCounter',
-  emits: ['add'],
+  emits: ['add', 'subtract'],
   props: {
     name: String
   },
@@ -53,6 +53,7 @@ export default defineComponent({
     subtract() {
       if (this.count !== 0) {
         this.count -= 1
+        this.$emit('subtract', this.count)
       }
     },
     reset() {

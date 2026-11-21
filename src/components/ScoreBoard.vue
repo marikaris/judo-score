@@ -18,6 +18,8 @@
         <JudoPlayer
           @wins="stopTimeIfWin"
           @loses="processLoss('p1')"
+          @winUndone="resumeTimeIfStopped"
+          @shidoUndone="undoShidoWin('p1')"
           ref="p1"
           :name="player1"
           :player="1"
@@ -30,6 +32,8 @@
         <JudoPlayer
           @wins="stopTimeIfWin"
           @loses="processLoss('p2')"
+          @winUndone="resumeTimeIfStopped"
+          @shidoUndone="undoShidoWin('p2')"
           ref="p2"
           :name="player2"
           :player="2"
@@ -81,7 +85,19 @@ export default defineComponent({
     stopTimeIfWin() {
       if (this.ipponStopsTime) {
         ;(this.$refs as any).timeBanner.stopTimer()
+        this.timeStoppedByWin = true
       }
+    },
+    resumeTimeIfStopped() {
+      if (!this.timeStoppedByWin) {
+        return
+      }
+      const stillWinning = (player: string) => (this.$refs as any)[player].hasIppon()
+      if (stillWinning('p1') || stillWinning('p2')) {
+        return
+      }
+      this.timeStoppedByWin = false
+      ;(this.$refs as any).timeBanner.resumeTimer()
     },
     onSettingsChange() {
       this.message = (this.$refs as any).settings.msg
@@ -106,6 +122,10 @@ export default defineComponent({
         ;(this.$refs as any).p1.triggerWin()
       }
       this.stopTimeIfWin()
+    },
+    undoShidoWin(player: string) {
+      const other = player === 'p1' ? 'p2' : 'p1'
+      ;(this.$refs as any)[other].undoShidoWin()
     },
     resetScore() {
       ;(this.$refs as any).p1.reset()
@@ -147,6 +167,7 @@ export default defineComponent({
     onBreak: boolean
     hideShido: boolean
     fontScale: number
+    timeStoppedByWin: boolean
   } {
     return {
       mat: 'Mat 1',
@@ -165,7 +186,8 @@ export default defineComponent({
       maxShidos: 3,
       onBreak: false,
       hideShido: false,
-      fontScale: 1
+      fontScale: 1,
+      timeStoppedByWin: false
     }
   }
 })
