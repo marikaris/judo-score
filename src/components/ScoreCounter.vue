@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<style :scoped>
+<style scoped>
 h1.super-big {
   width: 40%;
 }
