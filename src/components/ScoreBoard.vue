@@ -62,6 +62,7 @@ import TimeBanner from '@/components/TimeBanner.vue'
 import BoardSettings from '@/components/BoardSettings.vue'
 import HelpPage from '@/components/HelpPage.vue'
 import BreakPage from '@/components/BreakPage.vue'
+import { sanitizeNumber } from '@/utils/utils'
 
 export default defineComponent({
   name: 'ScoreBoard',
@@ -88,15 +89,15 @@ export default defineComponent({
       this.boutTxt = (this.$refs as any).settings.boutTxt
       this.player1 = (this.$refs as any).settings.p1
       this.player2 = (this.$refs as any).settings.p2
-      this.maxTime = (this.$refs as any).settings.maxMatchTime
-      this.maxPinTime = (this.$refs as any).settings.maxPinTime
+      this.maxTime = sanitizeNumber((this.$refs as any).settings.maxMatchTime, 120, 1, 3600)
+      this.maxPinTime = sanitizeNumber((this.$refs as any).settings.maxPinTime, 20, 1, 300)
       this.ipponStopsTime = (this.$refs as any).settings.ipponStopsTime
       this.isCountdown = (this.$refs as any).settings.countdown == 'down' ? true : false
       this.useYuko = (this.$refs as any).settings.yuko
       this.mat = (this.$refs as any).settings.mat
-      this.maxShidos = (this.$refs as any).settings.maxShidos
+      this.maxShidos = sanitizeNumber((this.$refs as any).settings.maxShidos, 3, 1, 9)
       this.hideShido = (this.$refs as any).settings.hideShido
-      this.fontScale = (this.$refs as any).settings.fontScale
+      this.fontScale = sanitizeNumber((this.$refs as any).settings.fontScale, 1, 0.5, 2)
       document.documentElement.style.setProperty('--font-scale', this.fontScale.toString())
     },
     processLoss(player: string) {

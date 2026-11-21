@@ -1,4 +1,4 @@
-import { getTimer, prepend, convertSecondsToMinutes } from './utils'
+import { getTimer, prepend, convertSecondsToMinutes, sanitizeNumber } from './utils'
 import { expect, test, describe, jest } from '@jest/globals'
 
 describe('utils', () => {
@@ -38,6 +38,32 @@ describe('utils', () => {
       const result = prepend(0, array)
       expect(array).toEqual([1, 2, 3])
       expect(result).not.toBe(array)
+    })
+  })
+
+  describe('sanitizeNumber', () => {
+    test('it should fall back for an emptied number input', () => {
+      expect(sanitizeNumber('', 120, 1, 3600)).toBe(120)
+    })
+
+    test('it should fall back for a non-numeric value', () => {
+      expect(sanitizeNumber('abc', 3, 1, 9)).toBe(3)
+    })
+
+    test('it should parse numeric strings', () => {
+      expect(sanitizeNumber('90', 120, 1, 3600)).toBe(90)
+    })
+
+    test('it should clamp negative values to the minimum', () => {
+      expect(sanitizeNumber(-60, 120, 1, 3600)).toBe(1)
+    })
+
+    test('it should clamp values above the maximum', () => {
+      expect(sanitizeNumber(9999, 120, 1, 3600)).toBe(3600)
+    })
+
+    test('it should keep a valid value', () => {
+      expect(sanitizeNumber(2, 1, 0.5, 2)).toBe(2)
     })
   })
 

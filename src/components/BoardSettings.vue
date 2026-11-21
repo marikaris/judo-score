@@ -40,11 +40,11 @@
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> {{ $t('settings.fontScale') }}: </label>
           <div class="col-sm-2">
-            <input type="number" step="0.1" min="0.5" max="2" class="form-control" v-model="fontScale" />
+            <input type="number" step="0.1" min="0.5" max="2" class="form-control" v-model.number="fontScale" />
           </div>
           <div class="col-sm-3">
-            <button class="btn btn-primary" @click.prevent="fontScale = Math.min(2, fontScale + 0.1)">+</button>
-            <button class="btn btn-primary" @click.prevent="fontScale = Math.max(0.5, fontScale - 0.1)">-</button>
+            <button class="btn btn-primary" @click.prevent="fontScale = Math.min(2, Math.round((fontScale + 0.1) * 10) / 10)">+</button>
+            <button class="btn btn-primary" @click.prevent="fontScale = Math.max(0.5, Math.round((fontScale - 0.1) * 10) / 10)">-</button>
           </div>
         </div>
         <h2>{{ $t('settings.score') }}</h2>
@@ -65,7 +65,7 @@
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> {{ $t('settings.maxShidos') }}: </label>
           <div class="col-sm-3">
-            <input type="number" class="form-control" v-model="maxShidos" :disabled="hideShido" />
+            <input type="number" min="1" max="9" step="1" class="form-control" v-model.number="maxShidos" :disabled="hideShido" />
           </div>
         </div>
         <h2>{{ $t('settings.players') }}</h2>
@@ -86,18 +86,18 @@
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> {{ $t('settings.maxTime') }}: </label>
           <div class="col-sm-2">
-            <input type="number" class="form-control" v-model="maxMatchTime" />
+            <input type="number" min="1" max="3600" step="1" class="form-control" v-model.number="maxMatchTime" />
           </div>
           <div class="col-sm-1">{{ convertSecondsToMinutes(maxMatchTime) }} {{ $t('settings.minutes') }}</div>
           <div class="col-sm-3">
-            <button class="btn btn-primary" @click.prevent="maxMatchTime += 60">+ 1 min</button>
-            <button class="btn btn-primary" @click.prevent="maxMatchTime -= 60">- 1 min</button>
+            <button class="btn btn-primary" @click.prevent="maxMatchTime = Math.min(3600, Math.max(1, maxMatchTime + 60))">+ 1 min</button>
+            <button class="btn btn-primary" @click.prevent="maxMatchTime = Math.min(3600, Math.max(1, maxMatchTime - 60))">- 1 min</button>
           </div>
         </div>
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> {{ $t('settings.maxPinTime') }}: </label>
           <div class="col-sm-2">
-            <input type="number" class="form-control" v-model="maxPinTime" />
+            <input type="number" min="1" max="300" step="1" class="form-control" v-model.number="maxPinTime" />
           </div>
           <div class="col-sm-1">{{ $t('settings.seconds') }}</div>
         </div>
