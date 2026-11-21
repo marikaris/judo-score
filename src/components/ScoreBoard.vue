@@ -10,11 +10,11 @@
       @openHelpEvent="toggleHelp"
       @openBreakPageEvent="toggleBreakPage"
     />
-    <BreakPage v-if="onBreak" :mat="mat" />
-    <div v-else>
+    <BreakPage v-if="onBreak && !settingsOpen && !helpOpen" :mat="mat" />
+    <div v-show="!onBreak || settingsOpen || helpOpen">
       <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="saveSettings" />
       <HelpPage ref="help" v-show="helpOpen" />
-      <div v-show="!settingsOpen && !helpOpen">
+      <div v-show="!settingsOpen && !helpOpen && !onBreak">
         <JudoPlayer
           @wins="stopTimeIfWin"
           @loses="processLoss('p1')"
