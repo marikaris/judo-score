@@ -25,7 +25,7 @@
       <MatchTimer ref="matchTimer" :maxTime="maximumTime" :isCountdown="actualIsCountdown" />
     </div>
     <div class="col-2">
-      <PinningTimer ref="pinTimer" />
+      <PinningTimer ref="pinTimer" :maxTime="maxPinTime" />
     </div>
     <div class="col-1 d-flex align-items-center">
       <div
@@ -79,6 +79,10 @@ export default defineComponent({
     maxTime: {
       type: Number,
       required: true
+    },
+    maxPinTime: {
+      type: Number,
+      default: 20
     },
     players: {
       // [player1, player2]
