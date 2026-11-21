@@ -22,19 +22,19 @@
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> {{ $t('settings.mat') }}: </label>
           <div class="col-sm-3">
-            <input type="string" class="form-control" v-model="mat" />
+            <input type="text" class="form-control" v-model="mat" />
           </div>
         </div>
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> {{ $t('settings.boutName') }}: </label>
           <div class="col-sm-3">
-            <input type="string" class="form-control" v-model="boutTxt" />
+            <input type="text" class="form-control" v-model="boutTxt" />
           </div>
         </div>
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> {{ $t('settings.welcomeMessage') }}: </label>
           <div class="col-sm-3">
-            <input type="string" class="form-control" v-model="msg" />
+            <input type="text" class="form-control" v-model="msg" />
           </div>
         </div>
         <div class="row mb-3">
@@ -72,14 +72,14 @@
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> {{ $t('settings.playerOne') }}: </label>
           <div class="col-sm-3">
-            <input type="string" class="form-control" v-model="p1" />
+            <input type="text" class="form-control" v-model="p1" />
           </div>
         </div>
         <!-- colour of players -->
         <div class="row mb-3">
           <label class="col-sm-3 col-form-label text-end"> {{ $t('settings.playerTwo') }}: </label>
           <div class="col-sm-3">
-            <input type="string" class="form-control" v-model="p2" />
+            <input type="text" class="form-control" v-model="p2" />
           </div>
         </div>
         <h2>{{ $t('settings.time') }}</h2>
