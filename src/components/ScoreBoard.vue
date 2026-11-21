@@ -1,5 +1,5 @@
 <template>
-  <div class="container-fluid bg-primary-subtle">
+  <div class="container-fluid bg-primary-subtle kiosk-board">
     <TopBanner
       ref="topBanner"
       :bout="bout"
@@ -11,18 +11,17 @@
       @openBreakPageEvent="toggleBreakPage"
     />
     <BreakPage v-if="onBreak" :mat="mat" />
-    <div v-else>
+    <div v-else class="kiosk-board-main">
       <BoardSettings ref="settings" v-show="settingsOpen" @saveSettings="saveSettings" />
       <HelpPage ref="help" v-show="helpOpen" />
-      <div v-show="!settingsOpen && !helpOpen">
+      <div v-show="!settingsOpen && !helpOpen" class="kiosk-board-body">
         <JudoPlayer
           @wins="stopTimeIfWin"
           @loses="processLoss('p1')"
           ref="p1"
           :name="player1"
           :player="1"
-          class="bg-white"
-          style="height: 35vh"
+          class="bg-white player-height"
           :useYuko="useYuko"
           :maxShidos="maxShidos"
           :hideShido="hideShido"
@@ -33,8 +32,7 @@
           ref="p2"
           :name="player2"
           :player="2"
-          class="bg-danger"
-          style="height: 35vh"
+          class="bg-danger player-height"
           :useYuko="useYuko"
           :maxShidos="maxShidos"
           :hideShido="hideShido"
@@ -48,6 +46,7 @@
           :players="[player1, player2]"
           :isSettingsOpen="settingsOpen"
           ref="timeBanner"
+          class="kiosk-time-banner"
         />
       </div>
     </div>
@@ -96,7 +95,9 @@ export default defineComponent({
       this.mat = (this.$refs as any).settings.mat
       this.maxShidos = (this.$refs as any).settings.maxShidos
       this.hideShido = (this.$refs as any).settings.hideShido
+
       this.fontScale = (this.$refs as any).settings.fontScale
+
       document.documentElement.style.setProperty('--font-scale', this.fontScale.toString())
     },
     processLoss(player: string) {
