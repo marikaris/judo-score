@@ -1,0 +1,13 @@
+node_modules
+dist
+.git
+.gitignore
+.github
+.vscode
+*.log
+npm-debug.log*
+yarn-error.log
+.yarn/cache
+.yarn/install-state.gz
+
+# docs is build input: HelpPage.vue imports docs/assets/KeyboardLayoutConfig.svg
