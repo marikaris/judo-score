@@ -65,11 +65,10 @@ import { toggleGoldenScoreMaximumTime } from '@/utils/goldenScore'
 export default defineComponent({
   name: 'TimeBanner',
   mounted() {
-    let self = this
-
-    window.addEventListener('keyup', function (e) {
-      self.handleKeyPress(e as KeyboardEvent)
-    })
+    window.addEventListener('keyup', this.handleKeyUp)
+  },
+  beforeUnmount() {
+    window.removeEventListener('keyup', this.handleKeyUp)
   },
   props: {
     isCountdown: {
@@ -111,6 +110,9 @@ export default defineComponent({
     }
   },
   methods: {
+    handleKeyUp(e: Event) {
+      this.handleKeyPress(e as KeyboardEvent)
+    },
     handleKeyPress(e: KeyboardEvent) {
       if (!this.isSettingsOpen) {
         if (e.code === 'Tab' || e.key === 'Control') {

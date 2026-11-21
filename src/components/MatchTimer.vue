@@ -73,6 +73,9 @@ export default defineComponent({
       clearInterval(this.timer)
     }
   },
+  beforeUnmount() {
+    this.stop()
+  },
   watch: {
     maxTime() {
       this.resetTime()
